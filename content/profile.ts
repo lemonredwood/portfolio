@@ -17,8 +17,8 @@ export const profile: Profile = {
 
   about: [
     "I build machine-learning systems that make it out of the notebook and into production. My work runs across deep learning, computer vision, and NLP, and I care most about the part that usually gets skipped: making a model hold up once it meets real, messy data.",
-    "Right now I do that as an AI Research Associate at Stryker's Global Technology Center in Bangalore. I've built physics-informed networks that forecast Li-ion battery health, pose-estimation pipelines that flag pressure-injury risk, and computer-vision datasets drawn from live surgical workflows — usually owning each one from first prototype through feasibility, data and modeling and trade-offs included.",
-    "I'm also finishing a BTech in Computer Science with an AI/ML specialization at VIT Chennai (CGPA 8.96). When I'm not shipping, I keep the fundamentals sharp — I'm a Kaggle Expert and have solved 400+ problems on LeetCode — because the systems that ship are the ones where the small details are right.",
+    "Most recently, as an AI Research Associate at Stryker's Global Technology Center in Bangalore, I built physics-informed networks that forecast Li-ion battery health, pose-estimation pipelines that flag pressure-injury risk, and computer-vision datasets drawn from live surgical workflows — usually owning each one from first prototype through feasibility, data and modeling and trade-offs included.",
+    "I finished a BTech in Computer Science with an AI/ML specialization at VIT Chennai (CGPA 8.96) this July, and in September I'm moving to Dublin to start an MSc in Data Science at Trinity College Dublin. I keep the fundamentals sharp — I'm a Kaggle Expert — because the systems that ship are the ones where the small details are right.",
   ],
 
   socials: [
@@ -31,11 +31,6 @@ export const profile: Profile = {
       platform: "linkedin",
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/lemonredwood",
-    },
-    {
-      platform: "leetcode",
-      label: "LeetCode",
-      href: "https://leetcode.com/u/lemonredwood",
     },
     {
       platform: "kaggle",
@@ -52,7 +47,7 @@ export const profile: Profile = {
   skills: [
     {
       name: "Languages",
-      skills: ["Python", "Java", "Kotlin", "C / C++", "SQL"],
+      skills: ["Python", "R", "Java", "Kotlin", "C / C++", "SQL"],
     },
     {
       name: "ML / DL",
@@ -85,7 +80,7 @@ export const profile: Profile = {
       company: "Stryker Global Technology Center (SGTC)",
       title: "AI Research Associate",
       location: "Bangalore, India",
-      period: "Feb 2025 – Present",
+      period: "Feb 2025 – Jul 2026",
       workstreams: [
         {
           name: "Battery Prognostics",
@@ -178,10 +173,6 @@ export const profile: Profile = {
       href: "https://www.kaggle.com/therohithanand",
     },
     {
-      label: "400+ LeetCode problems solved",
-      href: "https://leetcode.com/u/lemonredwood",
-    },
-    {
       label: "2nd Runner-up, Hacktomania",
       detail: "IEEE COMPSOC",
     },
@@ -210,6 +201,12 @@ export const profile: Profile = {
   ],
 
   education: [
+    {
+      institution: "Trinity College Dublin",
+      degree: "MSc in Data Science",
+      period: "From Sept 2026",
+      status: "incoming",
+    },
     {
       institution: "VIT Chennai",
       degree: "BTech, Computer Science — AI/ML Specialization",

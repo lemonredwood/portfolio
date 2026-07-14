@@ -109,6 +109,11 @@ export interface Education {
   readonly detail?: string;
   /** Optional tenure, e.g. "Sept 2022 – July 2026". */
   readonly period?: string;
+  /**
+   * Marks a program not yet started (an incoming enrollment). Excluded from
+   * schema.org `alumniOf` since the person is not yet an alumnus of it.
+   */
+  readonly status?: "incoming";
 }
 
 /** A club/society membership. */

@@ -78,7 +78,11 @@ export default function Contact() {
             </h4>
             <ul className="mt-4 space-y-3">
               {profile.education.map((entry) => {
-                const meta = [entry.detail, entry.period].filter(Boolean);
+                const meta = [
+                  entry.detail,
+                  entry.period,
+                  entry.status === "incoming" ? "incoming" : null,
+                ].filter(Boolean);
                 return (
                   <li key={entry.institution}>
                     <p className="text-sm text-foreground">

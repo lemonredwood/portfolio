@@ -18,9 +18,13 @@ export default function JsonLd() {
     .filter((social) => social.href.startsWith("http"))
     .map((social) => social.href);
 
-  // Alma maters = every education entry with a degree program attached
-  // (schooling entries without one aren't useful as `alumniOf` nodes).
-  const almaMaters = profile.education.filter((entry) => entry.degree);
+  // Alma maters = every education entry with a completed degree program
+  // (schooling entries without a degree aren't useful as `alumniOf` nodes, and
+  // not-yet-started programs marked `status: "incoming"` are excluded because
+  // the person isn't an alumnus of them yet).
+  const almaMaters = profile.education.filter(
+    (entry) => entry.degree && entry.status !== "incoming",
+  );
 
   const personLd = {
     "@context": "https://schema.org",
