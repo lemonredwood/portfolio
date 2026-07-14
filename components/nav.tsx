@@ -7,11 +7,20 @@ const links = [
   { href: "#skills", label: "skills", compactHidden: true },
   { href: "#experience", label: "experience", compactHidden: true },
   { href: "#projects", label: "projects" },
+  { href: "#journey", label: "journey", compactHidden: true },
   { href: "#contact", label: "contact" },
 ];
 
 // Every section the spy watches (brand prompt links to #home).
-const sectionIds = ["home", "about", "skills", "experience", "projects", "contact"];
+const sectionIds = [
+  "home",
+  "about",
+  "skills",
+  "experience",
+  "projects",
+  "journey",
+  "contact",
+];
 
 /**
  * Scroll-spy: highlights the nav link for the section currently crossing a thin

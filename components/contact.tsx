@@ -23,7 +23,7 @@ function DownloadArrow() {
 
 export default function Contact() {
   return (
-    <Section id="contact" index={5} label="contact">
+    <Section id="contact" index={6} label="contact">
       {/* Invitation — the email is the accent centrepiece. */}
       <div>
         <h3 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">

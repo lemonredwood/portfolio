@@ -59,6 +59,20 @@ export default function Hero() {
               </p>
             </div>
 
+            {/* cat status.txt → current status, static (no typing → no CLS) */}
+            <div className="space-y-3">
+              <p className="text-muted">
+                <Prompt />{" "}
+                <span className="text-foreground">cat status.txt</span>
+              </p>
+              <p className="max-w-2xl text-pretty text-foreground">
+                <span aria-hidden className="text-accent">
+                  →
+                </span>{" "}
+                {profile.status}
+              </p>
+            </div>
+
             {/* ls links/ → socials + scroll hint */}
             <div className="space-y-3">
               <p className="text-muted">

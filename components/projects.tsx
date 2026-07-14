@@ -115,6 +115,26 @@ export default function Projects() {
           </article>
         ))}
       </div>
+
+      {/* Slim full-width banner: the grid is a curated few; the rest lives on
+          GitHub. */}
+      <a
+        href="https://github.com/lemonredwood"
+        target="_blank"
+        rel="noreferrer"
+        className="group mt-6 flex flex-col gap-1.5 rounded-xl border border-border bg-surface px-6 py-5 font-mono text-sm transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_-14px_rgba(34,211,238,0.4)] sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+      >
+        <span className="text-muted">
+          <span aria-hidden className="select-none text-accent">
+            $
+          </span>{" "}
+          git clone <span className="text-foreground">lemonredwood/*</span>
+        </span>
+        <span className="inline-flex items-center gap-1.5 text-foreground transition-colors group-hover:text-accent">
+          see everything on GitHub
+          <span aria-hidden>↗</span>
+        </span>
+      </a>
     </Section>
   );
 }

@@ -4,6 +4,7 @@ import About from "@/components/about";
 import Skills from "@/components/skills";
 import Experience from "@/components/experience";
 import Projects from "@/components/projects";
+import Journey from "@/components/journey";
 import Contact from "@/components/contact";
 import JsonLd from "@/components/json-ld";
 
@@ -18,6 +19,7 @@ export default function Home() {
         <Skills />
         <Experience />
         <Projects />
+        <Journey />
         <Contact />
       </main>
     </>

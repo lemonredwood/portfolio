@@ -47,6 +47,14 @@ export interface Workstream {
   readonly bullets: readonly string[];
 }
 
+/** A single headline stat for a {@link Role}, rendered as a bare KPI tile. */
+export interface RoleMetric {
+  /** The number itself, pre-formatted, e.g. "0.0301" or "96.24%". */
+  readonly value: string;
+  /** What the number measures, e.g. "MAE — Li-ion RUL forecasting (PINNs)". */
+  readonly label: string;
+}
+
 /** A position held, composed of one or more {@link Workstream}s. */
 export interface Role {
   /** Employer / organization. */
@@ -57,6 +65,8 @@ export interface Role {
   readonly location?: string;
   /** Human-readable tenure, e.g. "Feb 2025 – Present". */
   readonly period: string;
+  /** Optional headline metrics, shown as a KPI row above the workstreams. */
+  readonly metrics?: readonly RoleMetric[];
   /** The distinct efforts owned in this role. */
   readonly workstreams: readonly Workstream[];
 }
@@ -124,6 +134,21 @@ export interface Society {
   readonly role?: string;
 }
 
+/**
+ * One point on the career/education timeline, rendered as a fake `git log`
+ * commit in the journey section.
+ */
+export interface TimelineEntry {
+  /** Human-readable date, e.g. "Sept 2026" or "Sep–Oct 2024". */
+  readonly date: string;
+  /** The headline event — reads as the commit message. */
+  readonly title: string;
+  /** Optional supporting detail, shown muted beneath the title. */
+  readonly detail?: string;
+  /** Category, driving the muted `[tag]` and the HEAD decoration. */
+  readonly kind: "education" | "work" | "cert" | "award" | "next";
+}
+
 /** The complete, typed content model for the site. Populated in `profile.ts`. */
 export interface Profile {
   /** Full name. */
@@ -136,6 +161,8 @@ export interface Profile {
   readonly email: string;
   /** Hero tagline. */
   readonly tagline: string;
+  /** One-line current status, shown as `cat status.txt` output in the hero. */
+  readonly status: string;
   /** About section — one entry per paragraph. */
   readonly about: readonly string[];
   /** Social + contact links, in display order. */
@@ -154,6 +181,8 @@ export interface Profile {
   readonly education: readonly Education[];
   /** Club / society memberships. */
   readonly societies: readonly Society[];
+  /** Career/education timeline, newest first, for the journey section. */
+  readonly timeline: readonly TimelineEntry[];
   /** Path to the downloadable resume PDF. */
   readonly resumeUrl: string;
 }

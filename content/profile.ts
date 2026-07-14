@@ -15,6 +15,9 @@ export const profile: Profile = {
   tagline:
     "I build ML systems that ship — deep learning, computer vision, and NLP, from research to production.",
 
+  status:
+    "Dublin-bound — MSc in Data Science @ Trinity College Dublin from Sept 2026 · open to ML/data opportunities",
+
   about: [
     "I build machine-learning systems that make it out of the notebook and into production. My work runs across deep learning, computer vision, and NLP, and I care most about the part that usually gets skipped: making a model hold up once it meets real, messy data.",
     "Most recently, as an AI Research Associate at Stryker's Global Technology Center in Bangalore, I built physics-informed networks that forecast Li-ion battery health, pose-estimation pipelines that flag pressure-injury risk, and computer-vision datasets drawn from live surgical workflows — usually owning each one from first prototype through feasibility, data and modeling and trade-offs included.",
@@ -73,6 +76,18 @@ export const profile: Profile = {
       name: "Other",
       skills: ["Android Development", "MySQL", "Front-end Web"],
     },
+    {
+      name: "Core CS Coursework",
+      skills: [
+        "Data Structures & Algorithms",
+        "Operating Systems",
+        "Computer Networks",
+        "Database Systems",
+        "Compiler Design",
+        "Cryptography & Network Security",
+        "Theory of Computation",
+      ],
+    },
   ],
 
   experience: [
@@ -81,6 +96,20 @@ export const profile: Profile = {
       title: "AI Research Associate",
       location: "Bangalore, India",
       period: "Feb 2025 – Jul 2026",
+      metrics: [
+        {
+          value: "0.0301",
+          label: "MAE — Li-ion RUL forecasting (PINNs)",
+        },
+        {
+          value: "96.24%",
+          label: "posture-classification accuracy (Procuity)",
+        },
+        {
+          value: "75+",
+          label: "spatial, temporal & respiratory features engineered",
+        },
+      ],
       workstreams: [
         {
           name: "Battery Prognostics",
@@ -232,6 +261,75 @@ export const profile: Profile = {
     },
     {
       name: "Linux Club",
+    },
+  ],
+
+  // Newest first. Every entry is drawn from the resume — no invented dates or
+  // claims. Kaggle Expert / Hacktomania carry no dates on the resume and so are
+  // intentionally absent here.
+  timeline: [
+    {
+      date: "Sept 2026",
+      title: "MSc in Data Science, Trinity College Dublin",
+      kind: "next",
+    },
+    {
+      date: "Jul 2026",
+      title: "Wrapped up as AI Research Associate at Stryker SGTC",
+      kind: "work",
+    },
+    {
+      date: "Jul 2026",
+      title: "Completed BTech in Computer Science (AI/ML), VIT Chennai",
+      detail: "CGPA 8.96",
+      kind: "education",
+    },
+    {
+      date: "Feb 2025",
+      title: "Spatial Speak",
+      detail: "Cosmonova Hackathon",
+      kind: "award",
+    },
+    {
+      date: "Feb 2025",
+      title: "Joined Stryker SGTC",
+      detail: "Bangalore, India",
+      kind: "work",
+    },
+    {
+      date: "Sep–Oct 2024",
+      title: "DraupECHO",
+      detail: "Intel GenAI Hackathon",
+      kind: "award",
+    },
+    {
+      date: "Jul 2024",
+      title: "Android Development Masterclass",
+      detail: "Udemy",
+      kind: "cert",
+    },
+    {
+      date: "May 2024",
+      title: "Machine Learning Specialization",
+      detail: "DeepLearning.AI",
+      kind: "cert",
+    },
+    {
+      date: "Jan 2024",
+      title: "Deep Learning Fundamentals",
+      detail: "NVIDIA",
+      kind: "cert",
+    },
+    {
+      date: "Sept 2022",
+      title: "Started BTech at VIT Chennai",
+      kind: "education",
+    },
+    {
+      date: "2019",
+      title: "Class XII, DPS Nalco",
+      detail: "88.6%",
+      kind: "education",
     },
   ],
 
