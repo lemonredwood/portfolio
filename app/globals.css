@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+/*
+ * Dark-only "dark techy" theme. There is intentionally no light mode
+ * and no prefers-color-scheme handling — these tokens are the theme.
+ */
+:root {
+  --background: #0a0e14;
+  --surface: #10151f;
+  --border: #1f2733;
+  --foreground: #e6edf3;
+  --muted: #8b949e;
+  --accent: #22d3ee;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background-color: var(--background);
+  /* Subtle full-page grid: 1px lines of softened border color every 40px. */
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--border) 55%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--border) 55%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px;
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/*
+ * Global keyboard-focus ring. One accent-tinted, offset outline for every
+ * interactive element, shown only for keyboard users (`:focus-visible`). The
+ * outline follows each element's own border-radius, so no per-element styling
+ * is needed. `border-radius` is intentionally not set here — doing so would
+ * override the focused element's real corners.
+ */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/*
+ * #main is only ever focused programmatically, as the skip-link's target — a
+ * focus ring wrapped around the entire page body is pure noise there. This
+ * must live here, unlayered, because a `focus:outline-none` utility sits in a
+ * `@layer` and always loses to the unlayered global rule above.
+ */
+#main:focus-visible {
+  outline: none;
+}
+
+/*
+ * Skip-to-content link — the first focusable element on the page. Kept off the
+ * top edge until focused (not `display:none`, so it stays in the tab order),
+ * then slides into view in the site's mono style.
+ */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  margin: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.5rem;
+  background-color: var(--surface);
+  color: var(--foreground);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.8125rem;
+  transform: translateY(-150%);
+  transition: transform 150ms ease-out;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+}
+
+/*
+ * Print: the dark theme would come out white-on-white (browsers strip dark
+ * page backgrounds but keep light text colors). Remapping the tokens is all
+ * it takes — every component styles itself via these variables. Also drop the
+ * page grid and hide screen chrome: sticky nav, scroll hint, and the fixed
+ * skip-link (fixed elements repeat on every printed page, and its off-screen
+ * translate bleeds it onto the previous page as a stray button).
+ */
+@media print {
+  :root {
+    --background: #ffffff;
+    --surface: #ffffff;
+    --border: #d0d7de;
+    --foreground: #111827;
+    --muted: #4b5563;
+    --accent: #0e7490;
+  }
+
+  body {
+    background-image: none;
+  }
+
+  /* The hero card's cyan glow prints as a gray smudge; shadows are screen-
+     only decoration. Unlayered, so it outranks the layered shadow utility. */
+  * {
+    box-shadow: none;
+  }
+
+  header,
+  .skip-link,
+  [data-print-hide] {
+    display: none;
+  }
+}
