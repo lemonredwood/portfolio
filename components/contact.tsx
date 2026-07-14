@@ -112,7 +112,7 @@ export default function Contact() {
               {profile.certificates.map((cert) => (
                 <li key={cert.name} className="text-sm text-muted">
                   <span className="text-foreground">{cert.name}</span>
-                  {" — "}
+                  {" · "}
                   {cert.issuer}, {cert.year}
                 </li>
               ))}

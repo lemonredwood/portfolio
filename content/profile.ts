@@ -7,21 +7,20 @@ import type { Profile } from "./types";
  */
 export const profile: Profile = {
   name: "Rohith Anand",
-  role: "AI Research Associate @ Stryker",
+  role: "Incoming MSc in Data Science @ Trinity College Dublin",
   location: "Bangalore, India",
   email: "therohithanand@gmail.com",
 
-  // Final tagline, verbatim from PLAN §9.4.
   tagline:
-    "I build ML systems that ship — deep learning, computer vision, and NLP, from research to production.",
+    "I build ML systems that ship: deep learning, computer vision, and NLP, from research to production.",
 
   status:
-    "Dublin-bound — MSc in Data Science @ Trinity College Dublin from Sept 2026 · open to ML/data opportunities",
+    "wrapping up at Stryker · moving to Dublin in Sept 2026 · open to ML/data opportunities",
 
   about: [
     "I build machine-learning systems that make it out of the notebook and into production. My work runs across deep learning, computer vision, and NLP, and I care most about the part that usually gets skipped: making a model hold up once it meets real, messy data.",
-    "Most recently, as an AI Research Associate at Stryker's Global Technology Center in Bangalore, I built physics-informed networks that forecast Li-ion battery health, pose-estimation pipelines that flag pressure-injury risk, and computer-vision datasets drawn from live surgical workflows — usually owning each one from first prototype through feasibility, data and modeling and trade-offs included.",
-    "I finished a BTech in Computer Science with an AI/ML specialization at VIT Chennai (CGPA 8.96) this July, and in September I'm moving to Dublin to start an MSc in Data Science at Trinity College Dublin. I keep the fundamentals sharp — I'm a Kaggle Expert — because the systems that ship are the ones where the small details are right.",
+    "Most recently, as an AI Research Associate at Stryker's Global Technology Center in Bangalore, I built physics-informed networks that forecast Li-ion battery health, pose-estimation pipelines that flag pressure-injury risk, and computer-vision datasets drawn from live surgical workflows, usually owning each one from first prototype through feasibility, data and modeling and trade-offs included.",
+    "I finished a BTech in Computer Science with an AI/ML specialization at VIT Chennai (CGPA 8.96) this July, and in September I'm moving to Dublin to start an MSc in Data Science at Trinity College Dublin. I keep the fundamentals sharp (I'm a Kaggle Expert) because the systems that ship are the ones where the small details are right.",
   ],
 
   socials: [
@@ -61,6 +60,7 @@ export const profile: Profile = {
         "scikit-learn",
         "XGBoost",
         "OpenCV",
+        "MLOps",
       ],
     },
     {
@@ -73,8 +73,8 @@ export const profile: Profile = {
       ],
     },
     {
-      name: "Other",
-      skills: ["Android Development", "MySQL", "Front-end Web"],
+      name: "Cloud & Other",
+      skills: ["Azure", "Android Development", "MySQL", "Front-end Web"],
     },
     {
       name: "Core CS Coursework",
@@ -96,20 +96,6 @@ export const profile: Profile = {
       title: "AI Research Associate",
       location: "Bangalore, India",
       period: "Feb 2025 – Jul 2026",
-      metrics: [
-        {
-          value: "0.0301",
-          label: "MAE — Li-ion RUL forecasting (PINNs)",
-        },
-        {
-          value: "96.24%",
-          label: "posture-classification accuracy (Procuity)",
-        },
-        {
-          value: "75+",
-          label: "spatial, temporal & respiratory features engineered",
-        },
-      ],
       workstreams: [
         {
           name: "Battery Prognostics",
@@ -124,7 +110,7 @@ export const profile: Profile = {
           name: "Procuity",
           summary: "Pressure-injury reduction",
           bullets: [
-            "Owned the ML pipeline end to end, from inception through feasibility exit.",
+            "Owned the ML pipeline end to end, from inception through feasibility exit, running MLOps on Azure.",
             "Combined sensor-based pose estimation with an ensemble of four deep models and CatBoost, hitting 96.24% posture-classification accuracy.",
             "Engineered 75+ spatial, temporal, and respiratory features using dual-window processing.",
           ],
@@ -142,6 +128,23 @@ export const profile: Profile = {
   ],
 
   projects: [
+    {
+      name: "ClinJudge",
+      blurb:
+        "An independent research project auditing LLM-as-judge evaluators of clinical AI for demographic bias and measurement validity.",
+      bullets: [
+        "Measures bias by construction: hold an answer's text fixed, vary only the patient's demographics in the vignette, and read any change in the judge's verdict as demographic bias, with no gold labels needed.",
+        "Runs a validity battery against a human anchor: inter-judge agreement, position, verbosity, and self-preference bias, test-retest reliability, and calibration.",
+        "Checks error equity, testing whether a judge's measurement error is distributed evenly across patient groups.",
+        "Ships a cached, resumable judging CLI that runs against any OpenAI-compatible endpoint, so every analysis re-runs from local artifacts without re-querying models.",
+      ],
+      stack: ["Python", "pytest", "uv", "vLLM", "Ollama", "Transformers"],
+      badge: "Research · in progress",
+      repo: {
+        label: "Source",
+        href: "https://github.com/lemonredwood/ClinJudge",
+      },
+    },
     {
       name: "The Grind",
       blurb:
@@ -184,7 +187,7 @@ export const profile: Profile = {
     {
       name: "Spatial Speak",
       blurb:
-        "A voice assistant for space-agriculture research — ask questions out loud, get answers grounded in NASA and Scholar sources.",
+        "A voice assistant for space-agriculture research: ask questions out loud, get answers grounded in NASA and Scholar sources.",
       bullets: [
         "Voice-driven Q&A for space-agriculture research, built on Next.js and Python.",
         "Transcribes speech with AssemblyAI.",
@@ -238,7 +241,7 @@ export const profile: Profile = {
     },
     {
       institution: "VIT Chennai",
-      degree: "BTech, Computer Science — AI/ML Specialization",
+      degree: "BTech, Computer Science (AI/ML Specialization)",
       detail: "CGPA 8.96",
       period: "Sept 2022 – July 2026",
     },
@@ -275,7 +278,7 @@ export const profile: Profile = {
     },
     {
       date: "Jul 2026",
-      title: "Wrapped up as AI Research Associate at Stryker SGTC",
+      title: "Wrapped up as AI Research Associate at Stryker",
       kind: "work",
     },
     {
@@ -292,7 +295,7 @@ export const profile: Profile = {
     },
     {
       date: "Feb 2025",
-      title: "Joined Stryker SGTC",
+      title: "Joined Stryker",
       detail: "Bangalore, India",
       kind: "work",
     },

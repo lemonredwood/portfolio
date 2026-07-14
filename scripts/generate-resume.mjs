@@ -151,7 +151,7 @@ function renderCertificates() {
   const items = profile.certificates
     .map(
       (c) =>
-        `<div class="line"><span class="strong">${esc(c.name)}</span> — ${esc(c.issuer)}, ${esc(c.year)}</div>`,
+        `<div class="line"><span class="strong">${esc(c.name)}</span> · ${esc(c.issuer)}, ${esc(c.year)}</div>`,
     )
     .join("");
   return section("Certifications", items);
@@ -176,7 +176,7 @@ function buildHtml() {
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>${esc(profile.name)} — Résumé</title>
+<title>${esc(profile.name)} · Résumé</title>
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }

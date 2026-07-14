@@ -76,27 +76,46 @@ export default function Journey() {
                   )}
                 </div>
 
-                {/* Commit line. */}
+                {/* Commit line. The HEAD (future) row — the Trinity College
+                    Dublin move — gets an emphasized accent card + glow. */}
                 <div className={isLast ? "min-w-0" : "min-w-0 pb-4"}>
-                  <p className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                    <span className="hidden text-muted/70 sm:inline">
-                      {hash}
-                    </span>
-                    <span className="text-accent">{entry.date}</span>
-                    {isHead ? (
-                      <span className="text-accent">
-                        {"(HEAD -> future)"}
+                  <div
+                    className={
+                      isHead
+                        ? "rounded-lg border border-accent/40 bg-accent/5 px-3 py-2 shadow-[0_0_30px_-12px_rgba(34,211,238,0.5)]"
+                        : undefined
+                    }
+                  >
+                    <p className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                      <span className="hidden text-muted/70 sm:inline">
+                        {hash}
                       </span>
-                    ) : (
-                      <span className="text-muted/70">
-                        {`[${KIND_TAG[entry.kind]}]`}
+                      <span className="text-accent">{entry.date}</span>
+                      {isHead ? (
+                        <span className="text-accent">
+                          {"(HEAD -> future)"}
+                        </span>
+                      ) : (
+                        <span className="text-muted/70">
+                          {`[${KIND_TAG[entry.kind]}]`}
+                        </span>
+                      )}
+                      <span
+                        className={
+                          isHead
+                            ? "font-semibold text-foreground"
+                            : "text-foreground"
+                        }
+                      >
+                        {entry.title}
                       </span>
+                    </p>
+                    {entry.detail && (
+                      <p className="mt-0.5 text-xs text-muted">
+                        {entry.detail}
+                      </p>
                     )}
-                    <span className="text-foreground">{entry.title}</span>
-                  </p>
-                  {entry.detail && (
-                    <p className="mt-0.5 text-xs text-muted">{entry.detail}</p>
-                  )}
+                  </div>
                 </div>
               </li>
             );

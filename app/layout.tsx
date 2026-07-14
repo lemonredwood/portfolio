@@ -14,13 +14,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = "Rohith Anand — ML Engineer";
+const title = "Rohith Anand · ML Engineer";
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
     default: title,
-    template: "%s — Rohith Anand",
+    template: "%s · Rohith Anand",
   },
   description: profile.tagline,
   alternates: {

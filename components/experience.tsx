@@ -23,31 +23,6 @@ export default function Experience() {
               </div>
             </header>
 
-            {/* Headline metrics — bare KPI tiles (glance) sitting above the
-                workstream bullets (context). Numbers wear text tokens, not the
-                accent, per the dataviz spec; a single accent tick decorates. */}
-            {role.metrics && role.metrics.length > 0 && (
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {role.metrics.map((metric) => (
-                  <div
-                    key={metric.label}
-                    className="relative overflow-hidden rounded-lg border border-border bg-surface p-5 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_0_40px_-16px_rgba(34,211,238,0.4)]"
-                  >
-                    <span
-                      aria-hidden
-                      className="absolute left-5 top-0 h-0.5 w-6 bg-accent"
-                    />
-                    <div className="text-5xl font-semibold tracking-tight tabular-nums text-foreground">
-                      {metric.value}
-                    </div>
-                    <div className="mt-2 font-mono text-xs leading-relaxed text-muted">
-                      {metric.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
             {/* Workstreams as sub-cards along an accent-marked timeline rail. */}
             <div className="relative mt-8">
               <span

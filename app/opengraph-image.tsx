@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { profile } from "@/content/profile";
 
 // Route metadata for the generated Open Graph card.
-export const alt = `${profile.name} — ${profile.role}`;
+export const alt = `${profile.name} · ${profile.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -119,9 +119,12 @@ export default function OpengraphImage() {
             <div
               style={{
                 display: "flex",
+                flexWrap: "wrap",
                 color: MUTED,
                 fontSize: 28,
+                lineHeight: 1.3,
                 marginTop: 18,
+                maxWidth: 920,
               }}
             >
               {profile.role}  ·  {profile.location}

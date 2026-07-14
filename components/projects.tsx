@@ -60,7 +60,9 @@ function Badge({ label }: { label: string }) {
 export default function Projects() {
   return (
     <Section id="projects" index={4} label="projects">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Four cards laid out 2×2 (from `sm` up) so the grid never orphans a
+          lone card in a trailing row. */}
+      <div className="grid gap-6 sm:grid-cols-2">
         {profile.projects.map((project) => (
           <article
             key={project.name}
