@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "#about", label: "about" },
-  { href: "#skills", label: "skills", compactHidden: true },
-  { href: "#experience", label: "experience", compactHidden: true },
-  { href: "#projects", label: "projects" },
-  { href: "#journey", label: "journey", compactHidden: true },
-  { href: "#contact", label: "contact" },
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills", compactHidden: true },
+  { href: "#experience", label: "Experience", compactHidden: true },
+  { href: "#projects", label: "Projects" },
+  { href: "#journey", label: "Journey", compactHidden: true },
+  { href: "#contact", label: "Contact" },
 ];
 
 // Every section the spy watches (brand prompt links to #home).
@@ -63,11 +63,11 @@ export default function Nav() {
       <nav className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <a
           href="#home"
-          className="whitespace-nowrap font-mono text-[13px] text-foreground transition-colors hover:text-accent sm:text-sm"
+          className="whitespace-nowrap text-sm font-medium text-foreground transition-colors hover:text-accent"
         >
-          rohith@portfolio:~$
+          Rohith Anand
         </a>
-        <ul className="flex items-center gap-3 font-mono text-xs sm:gap-6 sm:text-sm">
+        <ul className="flex items-center gap-3 text-xs sm:gap-6 sm:text-sm">
           {links.map((link) => {
             const isActive = active === link.href.slice(1);
             return (

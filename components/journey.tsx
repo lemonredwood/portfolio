@@ -1,122 +1,54 @@
 import Section from "./section";
 import { profile } from "@/content/profile";
-import type { TimelineEntry } from "@/content/types";
 
 /**
- * Deterministic 7-char hex "commit hash" derived purely from the entry title
- * (FNV-1a, 32-bit). Being a pure function of static copy, it produces identical
- * output on the server and the client — no `Math.random`, no hydration
- * mismatch, stable across renders.
+ * Career and education timeline as a clean vertical rail: dot + date + title
+ * per entry, newest first. The upcoming Trinity College Dublin entry gets an
+ * accent dot, semibold title, and a small "Upcoming" pill; everything else
+ * stays quiet and readable.
  */
-function commitHash(title: string): string {
-  let hash = 0x811c9dc5; // FNV offset basis
-  for (let i = 0; i < title.length; i++) {
-    hash ^= title.charCodeAt(i);
-    hash = Math.imul(hash, 0x01000193); // FNV prime
-  }
-  return (hash >>> 0).toString(16).padStart(8, "0").slice(0, 7);
-}
-
-/** Short, git-flavored tag per kind, shown muted. `next` uses the HEAD decoration instead. */
-const KIND_TAG: Record<TimelineEntry["kind"], string> = {
-  education: "edu",
-  work: "work",
-  cert: "cert",
-  award: "win",
-  next: "next",
-};
-
-/** The `rohith@portfolio:~$` shell prompt — echoes the hero's styling. */
-function Prompt() {
-  return (
-    <span className="select-none">
-      <span className="text-accent">rohith@portfolio</span>
-      <span className="text-muted">:~$</span>
-    </span>
-  );
-}
-
 export default function Journey() {
   const entries = profile.timeline;
 
   return (
-    <Section id="journey" index={5} label="journey">
-      <div className="font-mono text-sm leading-relaxed">
-        <p className="text-muted">
-          <Prompt />{" "}
-          <span className="text-foreground">git log --oneline --graph</span>
-        </p>
-
-        <ol className="mt-6">
-          {entries.map((entry, i) => {
-            const isHead = entry.kind === "next";
-            const isLast = i === entries.length - 1;
-            const hash = commitHash(entry.title);
-
+    <Section id="journey" label="Journey">
+      <div className="relative max-w-3xl">
+        <span
+          aria-hidden
+          className="absolute left-2 top-2 bottom-2 w-px -translate-x-1/2 bg-border"
+        />
+        <ol className="space-y-8">
+          {entries.map((entry) => {
+            const isUpcoming = entry.kind === "next";
             return (
               <li
                 key={`${entry.date} ${entry.title}`}
-                className="grid grid-cols-[0.75rem_1fr] gap-x-3 sm:gap-x-4"
+                className="relative pl-10"
               >
-                {/* Graph gutter: the `*` node plus a rail connecting down to the
-                    next commit. The last commit draws no rail below it. */}
-                <div
+                <span
                   aria-hidden
-                  className="relative flex justify-center leading-relaxed"
+                  className={`absolute left-2 top-1 size-3 -translate-x-1/2 rounded-full border-2 bg-background ${
+                    isUpcoming ? "border-accent" : "border-border"
+                  }`}
+                />
+                <p className="text-xs uppercase tracking-wider text-muted">
+                  {entry.date}
+                </p>
+                <p
+                  className={`mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[15px] text-foreground ${
+                    isUpcoming ? "font-semibold" : "font-medium"
+                  }`}
                 >
-                  <span
-                    className={`relative z-10 ${
-                      isHead ? "text-accent" : "text-muted"
-                    }`}
-                  >
-                    *
-                  </span>
-                  {!isLast && (
-                    <span className="absolute left-1/2 top-[1.4em] bottom-[-0.25rem] w-px -translate-x-1/2 bg-border" />
+                  {entry.title}
+                  {isUpcoming && (
+                    <span className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-2.5 py-0.5 text-[11px] font-medium text-accent">
+                      Upcoming
+                    </span>
                   )}
-                </div>
-
-                {/* Commit line. The HEAD (future) row — the Trinity College
-                    Dublin move — gets an emphasized accent card + glow. */}
-                <div className={isLast ? "min-w-0" : "min-w-0 pb-4"}>
-                  <div
-                    className={
-                      isHead
-                        ? "rounded-lg border border-accent/40 bg-accent/5 px-3 py-2 shadow-[0_0_30px_-12px_rgba(34,211,238,0.5)]"
-                        : undefined
-                    }
-                  >
-                    <p className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                      <span className="hidden text-muted/70 sm:inline">
-                        {hash}
-                      </span>
-                      <span className="text-accent">{entry.date}</span>
-                      {isHead ? (
-                        <span className="text-accent">
-                          {"(HEAD -> future)"}
-                        </span>
-                      ) : (
-                        <span className="text-muted/70">
-                          {`[${KIND_TAG[entry.kind]}]`}
-                        </span>
-                      )}
-                      <span
-                        className={
-                          isHead
-                            ? "font-semibold text-foreground"
-                            : "text-foreground"
-                        }
-                      >
-                        {entry.title}
-                      </span>
-                    </p>
-                    {entry.detail && (
-                      <p className="mt-0.5 text-xs text-muted">
-                        {entry.detail}
-                      </p>
-                    )}
-                  </div>
-                </div>
+                </p>
+                {entry.detail && (
+                  <p className="mt-1 text-sm text-secondary">{entry.detail}</p>
+                )}
               </li>
             );
           })}

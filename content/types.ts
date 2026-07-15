@@ -125,17 +125,17 @@ export interface Society {
 }
 
 /**
- * One point on the career/education timeline, rendered as a fake `git log`
- * commit in the journey section.
+ * One point on the career/education timeline, rendered as one row of the
+ * journey section's vertical timeline.
  */
 export interface TimelineEntry {
   /** Human-readable date, e.g. "Sept 2026" or "Sep–Oct 2024". */
   readonly date: string;
-  /** The headline event — reads as the commit message. */
+  /** The headline event. */
   readonly title: string;
-  /** Optional supporting detail, shown muted beneath the title. */
+  /** Optional supporting detail, shown beneath the title. */
   readonly detail?: string;
-  /** Category, driving the muted `[tag]` and the HEAD decoration. */
+  /** Category; `next` marks the upcoming entry for restrained emphasis. */
   readonly kind: "education" | "work" | "cert" | "award" | "next";
 }
 
@@ -151,7 +151,7 @@ export interface Profile {
   readonly email: string;
   /** Hero tagline. */
   readonly tagline: string;
-  /** One-line current status, shown as `cat status.txt` output in the hero. */
+  /** One-line current status, shown as a status line in the hero. */
   readonly status: string;
   /** About section — one entry per paragraph. */
   readonly about: readonly string[];

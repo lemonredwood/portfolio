@@ -1,109 +1,101 @@
 import { profile } from "@/content/profile";
-import TypedTagline from "./hooks/typed-tagline";
 
-/** The `rohith@portfolio:~$` shell prompt, reused before every command line. */
-function Prompt() {
+/** Down-into-tray arrow for the resume download button. */
+function DownloadArrow() {
   return (
-    <span className="select-none">
-      <span className="text-accent">rohith@portfolio</span>
-      <span className="text-muted">:~$</span>
-    </span>
+    <svg
+      viewBox="0 0 16 16"
+      className="size-4 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      aria-hidden
+    >
+      <path
+        d="M8 2.5V9.5M8 9.5 5 6.5M8 9.5 11 6.5M3 13h10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
-export default function Hero() {
-  // Everything except email belongs in the hero; email lives in the contact
-  // section. GitHub + LinkedIn lead the list in `profile.socials`.
-  const socials = profile.socials.filter(
-    (social) => social.platform !== "email",
+/** Up-right arrow marking a link that opens in a new tab. */
+function ExternalArrow() {
+  return (
+    <svg
+      viewBox="0 0 12 12"
+      className="size-3 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      aria-hidden
+    >
+      <path
+        d="M3.5 8.5 8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
+}
+
+/**
+ * Clean, content-first hero: name, role, location, current status, tagline,
+ * and a row of clearly labeled links. Fully static server component.
+ */
+export default function Hero() {
+  const button =
+    "inline-flex min-h-11 items-center gap-2 rounded-lg border border-border bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent";
 
   return (
     <section id="home" className="flex min-h-svh scroll-mt-24 items-center">
       <div className="mx-auto w-full max-w-6xl px-6 py-24">
-        <div className="overflow-hidden rounded-xl border border-border bg-surface shadow-[0_0_120px_-30px_rgba(34,211,238,0.25)]">
-          <div className="flex items-center gap-2 border-b border-border px-4 py-3">
-            <span className="size-3 rounded-full bg-[#ff5f57]" aria-hidden />
-            <span className="size-3 rounded-full bg-[#febc2e]" aria-hidden />
-            <span className="size-3 rounded-full bg-[#28c840]" aria-hidden />
-          </div>
+        <div className="max-w-3xl">
+          <h1 className="text-5xl font-bold tracking-tight text-balance text-foreground sm:text-6xl">
+            {profile.name}
+          </h1>
 
-          <div className="min-h-[45vh] space-y-8 p-6 font-mono text-sm leading-relaxed sm:p-8">
-            {/* whoami → identity */}
-            <div className="space-y-3">
-              <p className="text-muted">
-                <Prompt /> <span className="text-foreground">whoami</span>
-              </p>
-              <div className="space-y-1">
-                <h1 className="font-sans text-3xl font-bold tracking-tight text-balance text-foreground sm:text-4xl md:text-5xl">
-                  {profile.name}
-                </h1>
-                <p className="text-muted">
-                  {profile.role}
-                  <span aria-hidden className="mx-2 text-muted/40">
-                    ·
-                  </span>
-                  {profile.location}
-                </p>
-              </div>
-            </div>
+          <p className="mt-4 text-xl font-medium text-accent">{profile.role}</p>
+          <p className="mt-1 text-base text-muted">{profile.location}</p>
 
-            {/* cat tagline.txt → the typed tagline */}
-            <div className="space-y-3">
-              <p className="text-muted">
-                <Prompt />{" "}
-                <span className="text-foreground">cat tagline.txt</span>
-              </p>
-              <p className="max-w-2xl text-pretty text-foreground">
-                <TypedTagline text={profile.tagline} />
-              </p>
-            </div>
+          <p className="mt-6 flex items-baseline gap-2.5 text-base text-secondary">
+            <span
+              aria-hidden
+              className="size-2 shrink-0 self-center rounded-full bg-accent"
+            />
+            {profile.status}
+          </p>
 
-            {/* cat status.txt → current status, static (no typing → no CLS) */}
-            <div className="space-y-3">
-              <p className="text-muted">
-                <Prompt />{" "}
-                <span className="text-foreground">cat status.txt</span>
-              </p>
-              <p className="max-w-2xl text-pretty text-foreground">
-                <span aria-hidden className="text-accent">
-                  →
-                </span>{" "}
-                {profile.status}
-              </p>
-            </div>
+          <p className="mt-6 max-w-prose text-lg leading-relaxed text-pretty text-secondary sm:text-xl">
+            {profile.tagline}
+          </p>
 
-            {/* ls links/ → socials + scroll hint */}
-            <div className="space-y-3">
-              <p className="text-muted">
-                <Prompt /> <span className="text-foreground">ls links/</span>
-              </p>
-              <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-muted">
-                {socials.map((social) => (
-                  <li key={social.platform}>
-                    <a
-                      href={social.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1 underline-offset-4 transition-colors hover:text-accent hover:underline"
-                    >
-                      {social.label}
-                      <span aria-hidden>↗</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <p className="pt-1 text-muted" data-print-hide>
-                <span className="select-none">{"# scroll"}</span>{" "}
-                <span
-                  aria-hidden
-                  className="inline-block motion-safe:animate-bounce"
-                >
-                  ↓
-                </span>
-              </p>
-            </div>
-          </div>
+          <ul className="mt-10 flex flex-wrap gap-3">
+            {profile.socials.map((social) => {
+              const isExternal = social.href.startsWith("http");
+              return (
+                <li key={social.platform}>
+                  <a
+                    href={social.href}
+                    {...(isExternal
+                      ? { target: "_blank", rel: "noreferrer" }
+                      : {})}
+                    className={button}
+                  >
+                    {social.label}
+                    {isExternal && <ExternalArrow />}
+                  </a>
+                </li>
+              );
+            })}
+            <li>
+              <a href={profile.resumeUrl} download className={button}>
+                <DownloadArrow />
+                Resume (PDF)
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

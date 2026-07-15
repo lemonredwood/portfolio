@@ -3,7 +3,7 @@ import { profile } from "@/content/profile";
 
 export default function Experience() {
   return (
-    <Section id="experience" index={3} label="experience">
+    <Section id="experience" label="Experience">
       <div className="space-y-16">
         {profile.experience.map((role) => (
           <article key={`${role.company} ${role.title}`}>
@@ -17,7 +17,7 @@ export default function Experience() {
                   {role.title}
                 </p>
               </div>
-              <div className="shrink-0 font-mono text-xs text-muted md:text-right">
+              <div className="shrink-0 text-sm text-muted md:text-right">
                 <p>{role.period}</p>
                 {role.location && <p className="mt-0.5">{role.location}</p>}
               </div>
@@ -41,7 +41,7 @@ export default function Experience() {
                         {ws.name}
                       </h4>
                       {ws.summary && (
-                        <p className="mt-0.5 font-mono text-xs text-muted">
+                        <p className="mt-0.5 text-sm text-muted">
                           {ws.summary}
                         </p>
                       )}
@@ -49,11 +49,11 @@ export default function Experience() {
                         {ws.bullets.map((bullet) => (
                           <li
                             key={bullet}
-                            className="flex gap-3 text-sm leading-relaxed text-muted"
+                            className="flex gap-3 text-[15px] leading-relaxed text-secondary"
                           >
                             <span
                               aria-hidden
-                              className="mt-[0.5rem] size-1 shrink-0 rounded-full bg-accent/60"
+                              className="mt-[0.5625rem] size-1 shrink-0 rounded-full bg-accent/50"
                             />
                             <span>{bullet}</span>
                           </li>

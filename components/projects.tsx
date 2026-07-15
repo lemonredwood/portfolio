@@ -38,10 +38,10 @@ function ProjectLink({ link }: { link: Link }) {
 
 function Badge({ label }: { label: string }) {
   // "LIVE" reads as an accent pill with a pulsing dot; everything else
-  // (hackathon labels) is a neutral mono pill.
+  // (hackathon labels) is a neutral pill.
   if (label === "LIVE") {
     return (
-      <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-accent">
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wide text-accent">
         <span className="relative flex size-1.5">
           <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-75 motion-reduce:hidden" />
           <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
@@ -51,7 +51,7 @@ function Badge({ label }: { label: string }) {
     );
   }
   return (
-    <span className="inline-flex items-center rounded-full border border-border bg-background px-2.5 py-1 font-mono text-[11px] text-muted">
+    <span className="inline-flex items-center rounded-full border border-border bg-background px-2.5 py-1 text-[11px] font-medium text-muted">
       {label}
     </span>
   );
@@ -59,7 +59,7 @@ function Badge({ label }: { label: string }) {
 
 export default function Projects() {
   return (
-    <Section id="projects" index={4} label="projects">
+    <Section id="projects" label="Projects">
       {/* Four cards laid out 2×2 (from `sm` up) so the grid never orphans a
           lone card in a trailing row. */}
       <div className="grid gap-6 sm:grid-cols-2">
@@ -75,7 +75,7 @@ export default function Projects() {
               {project.badge && <Badge label={project.badge} />}
             </div>
 
-            <p className="mt-2 text-sm leading-relaxed text-muted">
+            <p className="mt-2 text-[15px] leading-relaxed text-secondary">
               {project.blurb}
             </p>
 
@@ -83,11 +83,11 @@ export default function Projects() {
               {project.bullets.map((bullet) => (
                 <li
                   key={bullet}
-                  className="flex gap-3 text-sm leading-relaxed text-muted"
+                  className="flex gap-3 text-[15px] leading-relaxed text-secondary"
                 >
                   <span
                     aria-hidden
-                    className="mt-[0.5rem] size-1 shrink-0 rounded-full bg-accent/60"
+                    className="mt-[0.5625rem] size-1 shrink-0 rounded-full bg-accent/50"
                   />
                   <span>{bullet}</span>
                 </li>
@@ -100,7 +100,7 @@ export default function Projects() {
                 {project.stack.map((tech) => (
                   <li
                     key={tech}
-                    className="rounded border border-border bg-background px-2 py-1 font-mono text-[11px] text-muted"
+                    className="rounded border border-border bg-background px-2 py-1 font-mono text-[13px] text-muted"
                   >
                     {tech}
                   </li>
@@ -108,7 +108,7 @@ export default function Projects() {
               </ul>
 
               {(project.live || project.repo) && (
-                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-4 font-mono text-sm">
+                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-4 text-sm font-medium">
                   {project.live && <ProjectLink link={project.live} />}
                   {project.repo && <ProjectLink link={project.repo} />}
                 </div>
@@ -118,23 +118,22 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Slim full-width banner: the grid is a curated few; the rest lives on
+      {/* Slim full-width card: the grid is a curated few; the rest lives on
           GitHub. */}
       <a
         href="https://github.com/lemonredwood"
         target="_blank"
         rel="noreferrer"
-        className="group mt-6 flex flex-col gap-1.5 rounded-xl border border-border bg-surface px-6 py-5 font-mono text-sm transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_-14px_rgba(34,211,238,0.4)] sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+        className="group mt-6 flex items-center justify-between gap-4 rounded-xl border border-border bg-surface px-6 py-5 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_-14px_rgba(34,211,238,0.4)]"
       >
-        <span className="text-muted">
-          <span aria-hidden className="select-none text-accent">
-            $
-          </span>{" "}
-          git clone <span className="text-foreground">lemonredwood/*</span>
+        <span className="text-[15px] font-medium text-foreground transition-colors group-hover:text-accent">
+          See more of my work on GitHub
         </span>
-        <span className="inline-flex items-center gap-1.5 text-foreground transition-colors group-hover:text-accent">
-          see everything on GitHub
-          <span aria-hidden>↗</span>
+        <span
+          aria-hidden
+          className="text-accent transition-transform duration-300 group-hover:translate-x-1"
+        >
+          →
         </span>
       </a>
     </Section>

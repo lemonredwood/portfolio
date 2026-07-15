@@ -9,6 +9,9 @@
   --surface: #10151f;
   --border: #1f2733;
   --foreground: #e6edf3;
+  /* Body/long-form text: sits between foreground and muted so prose reads
+     comfortably while headings still lead. AA-checked on bg and surface. */
+  --text-secondary: #b6c2cf;
   --muted: #8b949e;
   --accent: #22d3ee;
 }
@@ -18,6 +21,7 @@
   --color-surface: var(--surface);
   --color-border: var(--border);
   --color-foreground: var(--foreground);
+  --color-secondary: var(--text-secondary);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
@@ -36,16 +40,17 @@ html {
 
 body {
   background-color: var(--background);
-  /* Subtle full-page grid: 1px lines of softened border color every 40px. */
+  /* Barely-there full-page grid: 1px lines of heavily softened border color
+     every 40px, kept quiet so the type carries the page. */
   background-image:
     linear-gradient(
       to right,
-      color-mix(in srgb, var(--border) 55%, transparent) 1px,
+      color-mix(in srgb, var(--border) 28%, transparent) 1px,
       transparent 1px
     ),
     linear-gradient(
       to bottom,
-      color-mix(in srgb, var(--border) 55%, transparent) 1px,
+      color-mix(in srgb, var(--border) 28%, transparent) 1px,
       transparent 1px
     );
   background-size: 40px 40px;
@@ -95,7 +100,7 @@ body {
   border-radius: 0.5rem;
   background-color: var(--surface);
   color: var(--foreground);
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: 0.8125rem;
   transform: translateY(-150%);
   transition: transform 150ms ease-out;
@@ -115,9 +120,9 @@ body {
  * Print: the dark theme would come out white-on-white (browsers strip dark
  * page backgrounds but keep light text colors). Remapping the tokens is all
  * it takes — every component styles itself via these variables. Also drop the
- * page grid and hide screen chrome: sticky nav, scroll hint, and the fixed
- * skip-link (fixed elements repeat on every printed page, and its off-screen
- * translate bleeds it onto the previous page as a stray button).
+ * page grid and hide screen chrome: the sticky nav and the fixed skip-link
+ * (fixed elements repeat on every printed page, and its off-screen translate
+ * bleeds it onto the previous page as a stray button).
  */
 @media print {
   :root {
@@ -125,6 +130,7 @@ body {
     --surface: #ffffff;
     --border: #d0d7de;
     --foreground: #111827;
+    --text-secondary: #374151;
     --muted: #4b5563;
     --accent: #0e7490;
   }
@@ -140,8 +146,7 @@ body {
   }
 
   header,
-  .skip-link,
-  [data-print-hide] {
+  .skip-link {
     display: none;
   }
 }

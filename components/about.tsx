@@ -3,15 +3,15 @@ import Section from "./section";
 
 export default function About() {
   return (
-    <Section id="about" index={1} label="about">
-      {/* ~65ch measure; the lead paragraph sits at full foreground, the rest
-          settle back to muted for a readable emphasis hierarchy. */}
-      <div className="max-w-[65ch] space-y-5 text-pretty">
+    <Section id="about" label="About">
+      {/* Prose measure; the lead paragraph sits at full foreground, the rest
+          settle back one step for a readable emphasis hierarchy. */}
+      <div className="max-w-prose space-y-5 text-pretty">
         {profile.about.map((paragraph, index) => (
           <p
             key={index}
-            className={`leading-relaxed ${
-              index === 0 ? "text-foreground" : "text-muted"
+            className={`text-[17px] leading-relaxed ${
+              index === 0 ? "text-foreground" : "text-secondary"
             }`}
           >
             {paragraph}
@@ -22,7 +22,7 @@ export default function About() {
       <ul className="mt-10 flex flex-wrap gap-3">
         {profile.achievements.map((achievement) => {
           const chip =
-            "inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 font-mono text-xs text-foreground";
+            "inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-[13px] text-foreground";
           const body = (
             <>
               {achievement.label}
