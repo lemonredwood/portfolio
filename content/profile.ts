@@ -17,6 +17,28 @@ export const profile: Profile = {
   status:
     "wrapping up at Stryker · moving to Dublin in Sept 2026 · open to ML/data opportunities",
 
+  intro:
+    "I'm Rohith, a machine learning engineer moving from industry research into graduate study. Over the past year and a half at Stryker I took healthcare ML systems from first prototype to feasibility, owning the data, the modeling, and the trade-offs along the way. That work taught me what I now optimize for: models that hold up outside the lab, pipelines that other people can run, and claims that survive validation. This September I begin an MSc in Data Science at Trinity College Dublin, and alongside it I'm researching how reliably large language models judge clinical AI.",
+
+  highlights: [
+    "1.5 years of AI research at Stryker",
+    "Kaggle Expert",
+    "4 hackathon builds",
+    "CGPA 8.96, CS (AI/ML)",
+  ],
+
+  featured: {
+    label: "Currently researching",
+    text: "ClinJudge, an audit harness for LLM-as-judge evaluators of clinical AI",
+    href: "#projects",
+  },
+
+  focusAreas: [
+    { title: "Deep Learning & Computer Vision", blurb: "Models that hold up on real sensor data, from pose estimation to live surgical workflows." },
+    { title: "ML Systems & MLOps", blurb: "Pipelines owned end to end, from first prototype to feasibility exit, with MLOps on Azure." },
+    { title: "LLM Evaluation Research", blurb: "Auditing LLM-as-judge evaluators for demographic bias and measurement validity." },
+  ],
+
   about: [
     "I build machine-learning systems that make it out of the notebook and into production. My work runs across deep learning, computer vision, and NLP, and I care most about the part that usually gets skipped: making a model hold up once it meets real, messy data.",
     "Most recently, as an AI Research Associate at Stryker's Global Technology Center in Bangalore, I built physics-informed networks that forecast Li-ion battery health, pose-estimation pipelines that flag pressure-injury risk, and computer-vision datasets drawn from live surgical workflows, usually owning each one from first prototype through feasibility, data and modeling and trade-offs included.",

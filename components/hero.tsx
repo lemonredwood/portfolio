@@ -71,6 +71,33 @@ export default function Hero() {
             {profile.tagline}
           </p>
 
+          <p className="mt-5 max-w-prose text-[17px] leading-relaxed text-secondary">
+            {profile.intro}
+          </p>
+
+          <p className="mt-6 text-base">
+            <span className="font-medium text-accent">
+              {profile.featured.label}:
+            </span>{" "}
+            <a
+              href={profile.featured.href}
+              className="text-foreground transition-colors hover:text-accent"
+            >
+              {profile.featured.text} →
+            </a>
+          </p>
+
+          <ul className="mt-6 flex flex-wrap gap-2">
+            {profile.highlights.map((highlight) => (
+              <li
+                key={highlight}
+                className="rounded-full border border-border bg-surface px-3.5 py-1.5 text-[13px] text-secondary"
+              >
+                {highlight}
+              </li>
+            ))}
+          </ul>
+
           <ul className="mt-10 flex flex-wrap gap-3">
             {profile.socials.map((social) => {
               const isExternal = social.href.startsWith("http");
@@ -96,6 +123,22 @@ export default function Hero() {
               </a>
             </li>
           </ul>
+        </div>
+
+        <div className="mt-14 grid gap-4 sm:grid-cols-3">
+          {profile.focusAreas.map((area) => (
+            <div
+              key={area.title}
+              className="rounded-lg border border-border bg-surface/50 p-5"
+            >
+              <h3 className="text-[15px] font-semibold text-foreground">
+                {area.title}
+              </h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-secondary">
+                {area.blurb}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

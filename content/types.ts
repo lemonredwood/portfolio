@@ -139,6 +139,24 @@ export interface TimelineEntry {
   readonly kind: "education" | "work" | "cert" | "award" | "next";
 }
 
+/** A hero focus-area card — a titled area of work with a one-line blurb. */
+export interface FocusArea {
+  /** Focus-area heading, e.g. "ML Systems & MLOps". */
+  readonly title: string;
+  /** One-line description of the work in this area. */
+  readonly blurb: string;
+}
+
+/** A featured, linked one-liner in the hero, e.g. current research. */
+export interface FeaturedNote {
+  /** Short lead-in label, e.g. "Currently researching". */
+  readonly label: string;
+  /** The featured one-liner. */
+  readonly text: string;
+  /** Link target — an in-page anchor or URL. */
+  readonly href: string;
+}
+
 /** The complete, typed content model for the site. Populated in `profile.ts`. */
 export interface Profile {
   /** Full name. */
@@ -153,6 +171,14 @@ export interface Profile {
   readonly tagline: string;
   /** One-line current status, shown as a status line in the hero. */
   readonly status: string;
+  /** Hero intro paragraph — a longer narrative shown below the tagline. */
+  readonly intro: string;
+  /** Hero highlight chips — short credential badges. */
+  readonly highlights: readonly string[];
+  /** Featured note in the hero (e.g. current research), with a link. */
+  readonly featured: FeaturedNote;
+  /** Hero focus areas, rendered as a small grid of cards. */
+  readonly focusAreas: readonly FocusArea[];
   /** About section — one entry per paragraph. */
   readonly about: readonly string[];
   /** Social + contact links, in display order. */
