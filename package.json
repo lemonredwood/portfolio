@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:resume": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-resume.mjs",
     "generate:favicon": "node scripts/generate-favicon.mjs"
   },
   "dependencies": {

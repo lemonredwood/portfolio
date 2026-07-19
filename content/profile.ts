@@ -15,7 +15,7 @@ export const profile: Profile = {
     "I build ML systems that ship: deep learning, computer vision, and NLP, from research to production.",
 
   status:
-    "wrapping up at Stryker · moving to Dublin in Sept 2026 · open to ML/data opportunities",
+    "Wrapping up at Stryker · moving to Dublin in Sept 2026 · open to ML/data opportunities",
 
   intro:
     "I'm Rohith, a machine learning engineer moving from industry research into graduate study. Over the past year and a half at Stryker I took healthcare ML systems from first prototype to feasibility, owning the data, the modeling, and the trade-offs along the way. That work taught me what I now optimize for: models that hold up outside the lab, pipelines that other people can run, and claims that survive validation. This September I begin an MSc in Data Science at Trinity College Dublin, and alongside it I'm researching how reliably large language models judge clinical AI.",
@@ -40,9 +40,8 @@ export const profile: Profile = {
   ],
 
   about: [
-    "I build machine-learning systems that make it out of the notebook and into production. My work runs across deep learning, computer vision, and NLP, and I care most about the part that usually gets skipped: making a model hold up once it meets real, messy data.",
-    "Most recently, as an AI Research Associate at Stryker's Global Technology Center in Bangalore, I built physics-informed networks that forecast Li-ion battery health, pose-estimation pipelines that flag pressure-injury risk, and computer-vision datasets drawn from live surgical workflows, usually owning each one from first prototype through feasibility, data and modeling and trade-offs included.",
-    "I finished a BTech in Computer Science with an AI/ML specialization at VIT Chennai (CGPA 8.96) this July, and in September I'm moving to Dublin to start an MSc in Data Science at Trinity College Dublin. I keep the fundamentals sharp (I'm a Kaggle Expert) because the systems that ship are the ones where the small details are right.",
+    "At Stryker's Global Technology Center in Bangalore I built physics-informed networks that forecast Li-ion battery health, pose-estimation pipelines that flag pressure-injury risk, and computer-vision datasets drawn from live surgical workflows. Procuity, the largest of these, also had me running MLOps on Azure.",
+    "Underneath the projects: a BTech in Computer Science with an AI/ML specialization from Vellore Institute of Technology, Chennai (CGPA 8.96), Kaggle Expert rank, and a habit of sweating the small details, because those are what decide whether a system ships.",
   ],
 
   socials: [
@@ -153,12 +152,10 @@ export const profile: Profile = {
     {
       name: "ClinJudge",
       blurb:
-        "An independent research project auditing LLM-as-judge evaluators of clinical AI for demographic bias and measurement validity.",
+        "Auditing LLM-as-judge evaluators of clinical AI for demographic bias and measurement validity.",
       bullets: [
-        "Measures bias by construction: hold an answer's text fixed, vary only the patient's demographics in the vignette, and read any change in the judge's verdict as demographic bias, with no gold labels needed.",
-        "Runs a validity battery against a human anchor: inter-judge agreement, position, verbosity, and self-preference bias, test-retest reliability, and calibration.",
-        "Checks error equity, testing whether a judge's measurement error is distributed evenly across patient groups.",
-        "Ships a cached, resumable judging CLI that runs against any OpenAI-compatible endpoint, so every analysis re-runs from local artifacts without re-querying models.",
+        "Counterfactual method: fix the answer, vary patient demographics, read any verdict change as bias.",
+        "Validity battery against a human anchor plus a cached, resumable judging CLI.",
       ],
       stack: ["Python", "pytest", "uv", "vLLM", "Ollama", "Transformers"],
       badge: "Research · in progress",
@@ -172,10 +169,8 @@ export const profile: Profile = {
       blurb:
         "A live, multiplayer LeetCode tracker for grinding problems with friends in real time.",
       bullets: [
-        "Multiplayer tracker where a group's LeetCode progress syncs across everyone in real time.",
-        "Built on Supabase for realtime state and persistence.",
-        "Deployed on GitHub Pages and live in production today.",
-        "Fully open source at lemonredwood/the-grind.",
+        "Group progress syncs across everyone in real time on Supabase.",
+        "Live on GitHub Pages and in production use today.",
       ],
       stack: ["Supabase", "Realtime", "GitHub Pages"],
       badge: "LIVE",
@@ -193,10 +188,8 @@ export const profile: Profile = {
       blurb:
         "Real-time audio danger detection that turns a distress signal into an emergency response.",
       bullets: [
-        "Transcribes live audio with AssemblyAI speech-to-text.",
-        "Classifies emotion and tone with Hugging Face Transformers at 93.4% accuracy.",
-        "Scans transcripts through keyword risk pipelines to catch distress signals.",
-        "Fires Twilio and geolocation emergency alerts when danger is detected.",
+        "Live speech to text with emotion and tone classification at 93.4% accuracy.",
+        "Fires Twilio and geolocation alerts when danger is detected.",
       ],
       stack: [
         "AssemblyAI",
@@ -209,12 +202,10 @@ export const profile: Profile = {
     {
       name: "Spatial Speak",
       blurb:
-        "A voice assistant for space-agriculture research: ask questions out loud, get answers grounded in NASA and Scholar sources.",
+        "A voice assistant for space-agriculture research, grounded in NASA and Scholar datasets.",
       bullets: [
-        "Voice-driven Q&A for space-agriculture research, built on Next.js and Python.",
-        "Transcribes speech with AssemblyAI.",
-        "Answers with retrieval-augmented generation using LLaMA 3 8B via Ollama.",
-        "Grounds every response in NASA and Scholar datasets.",
+        "Voice-driven Q&A built on Next.js and Python with AssemblyAI speech.",
+        "Retrieval-augmented answers from LLaMA 3 8B running locally via Ollama.",
       ],
       stack: ["Next.js", "Python", "AssemblyAI", "Ollama", "LLaMA 3 8B", "RAG"],
       badge: "Cosmonova Hackathon",
@@ -262,13 +253,13 @@ export const profile: Profile = {
       status: "incoming",
     },
     {
-      institution: "VIT Chennai",
+      institution: "Vellore Institute of Technology, Chennai",
       degree: "BTech, Computer Science (AI/ML Specialization)",
       detail: "CGPA 8.96",
       period: "Sept 2022 – July 2026",
     },
     {
-      institution: "DPS Nalco",
+      institution: "Delhi Public School, Nalco",
     },
   ],
 
@@ -305,15 +296,9 @@ export const profile: Profile = {
     },
     {
       date: "Jul 2026",
-      title: "Completed BTech in Computer Science (AI/ML), VIT Chennai",
+      title: "Completed BTech in Computer Science (AI/ML), Vellore Institute of Technology, Chennai",
       detail: "CGPA 8.96",
       kind: "education",
-    },
-    {
-      date: "Feb 2025",
-      title: "Spatial Speak",
-      detail: "Cosmonova Hackathon",
-      kind: "award",
     },
     {
       date: "Feb 2025",
@@ -322,38 +307,8 @@ export const profile: Profile = {
       kind: "work",
     },
     {
-      date: "Sep–Oct 2024",
-      title: "DraupECHO",
-      detail: "Intel GenAI Hackathon",
-      kind: "award",
-    },
-    {
-      date: "Jul 2024",
-      title: "Android Development Masterclass",
-      detail: "Udemy",
-      kind: "cert",
-    },
-    {
-      date: "May 2024",
-      title: "Machine Learning Specialization",
-      detail: "DeepLearning.AI",
-      kind: "cert",
-    },
-    {
-      date: "Jan 2024",
-      title: "Deep Learning Fundamentals",
-      detail: "NVIDIA",
-      kind: "cert",
-    },
-    {
       date: "Sept 2022",
-      title: "Started BTech at VIT Chennai",
-      kind: "education",
-    },
-    {
-      date: "2019",
-      title: "Class XII, DPS Nalco",
-      detail: "88.6%",
+      title: "Started BTech at Vellore Institute of Technology, Chennai",
       kind: "education",
     },
   ],
