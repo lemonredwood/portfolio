@@ -72,7 +72,7 @@ export default function Hero() {
             </p>
 
             {/* Tagline promoted to the lede. */}
-            <p className="mt-6 max-w-prose text-xl font-medium text-pretty text-foreground sm:text-2xl">
+            <p className="mt-6 max-w-prose font-serif text-xl text-pretty text-foreground sm:text-2xl">
               {profile.tagline}
             </p>
 
