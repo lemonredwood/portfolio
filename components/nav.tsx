@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { profile } from "@/content/profile";
 
 const links = [
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills", compactHidden: true },
   { href: "#experience", label: "Experience", compactHidden: true },
   { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills", compactHidden: true },
   { href: "#journey", label: "Journey", compactHidden: true },
   { href: "#contact", label: "Contact" },
 ];
@@ -15,9 +16,9 @@ const links = [
 const sectionIds = [
   "home",
   "about",
-  "skills",
   "experience",
   "projects",
+  "skills",
   "journey",
   "contact",
 ];
@@ -67,27 +68,39 @@ export default function Nav() {
         >
           Rohith Anand
         </a>
-        <ul className="flex items-center gap-3 text-xs sm:gap-6 sm:text-sm">
-          {links.map((link) => {
-            const isActive = active === link.href.slice(1);
-            return (
-              <li
-                key={link.href}
-                className={link.compactHidden ? "hidden sm:list-item" : undefined}
-              >
-                <a
-                  href={link.href}
-                  aria-current={isActive ? "true" : undefined}
-                  className={`whitespace-nowrap transition-colors hover:text-accent ${
-                    isActive ? "text-accent" : "text-muted"
-                  }`}
+        <div className="flex items-center gap-3 sm:gap-6">
+          <ul className="flex items-center gap-3 text-xs sm:gap-6 sm:text-sm">
+            {links.map((link) => {
+              const isActive = active === link.href.slice(1);
+              return (
+                <li
+                  key={link.href}
+                  className={
+                    link.compactHidden ? "hidden sm:list-item" : undefined
+                  }
                 >
-                  {link.label}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+                  <a
+                    href={link.href}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`whitespace-nowrap transition-colors hover:text-accent ${
+                      isActive ? "text-accent" : "text-muted"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+          {/* Always-visible resume affordance, right-most in the bar. */}
+          <a
+            href={profile.resumeUrl}
+            download
+            className="whitespace-nowrap rounded-md border border-border px-3 py-1.5 text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
+          >
+            Resume
+          </a>
+        </div>
       </nav>
     </header>
   );

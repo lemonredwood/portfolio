@@ -16,9 +16,9 @@ export default function Home() {
       <main id="main" tabIndex={-1} className="scroll-mt-14">
         <Hero />
         <About />
-        <Skills />
         <Experience />
         <Projects />
+        <Skills />
         <Journey />
         <Contact />
       </main>

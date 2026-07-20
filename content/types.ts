@@ -43,6 +43,8 @@ export interface Workstream {
   readonly name: string;
   /** Optional one-line descriptor shown under the name. */
   readonly summary?: string;
+  /** Optional one-line headline metric, rendered bold under the workstream title. */
+  readonly result?: string;
   /** Metric-bearing accomplishment bullets. */
   readonly bullets: readonly string[];
 }
@@ -77,16 +79,6 @@ export interface Project {
   readonly live?: Link;
   /** Optional link to the source repository. */
   readonly repo?: Link;
-}
-
-/** A notable achievement or badge, optionally deep-linked to proof. */
-export interface Achievement {
-  /** The headline claim, e.g. "Kaggle Expert". */
-  readonly label: string;
-  /** Optional supporting detail or context. */
-  readonly detail?: string;
-  /** Optional link to the profile/proof backing the claim. */
-  readonly href?: string;
 }
 
 /** A completed certification / course. */
@@ -147,16 +139,6 @@ export interface FocusArea {
   readonly blurb: string;
 }
 
-/** A featured, linked one-liner in the hero, e.g. current research. */
-export interface FeaturedNote {
-  /** Short lead-in label, e.g. "Currently researching". */
-  readonly label: string;
-  /** The featured one-liner. */
-  readonly text: string;
-  /** Link target — an in-page anchor or URL. */
-  readonly href: string;
-}
-
 /** The complete, typed content model for the site. Populated in `profile.ts`. */
 export interface Profile {
   /** Full name. */
@@ -175,8 +157,6 @@ export interface Profile {
   readonly intro: string;
   /** Hero highlight chips — short credential badges. */
   readonly highlights: readonly string[];
-  /** Featured note in the hero (e.g. current research), with a link. */
-  readonly featured: FeaturedNote;
   /** Hero focus areas, rendered as a small grid of cards. */
   readonly focusAreas: readonly FocusArea[];
   /** About section — one entry per paragraph. */
@@ -189,8 +169,6 @@ export interface Profile {
   readonly experience: readonly Role[];
   /** Showcased projects, in display order. */
   readonly projects: readonly Project[];
-  /** Achievements / badges. */
-  readonly achievements: readonly Achievement[];
   /** Certifications. */
   readonly certificates: readonly Certificate[];
   /** Education history. */

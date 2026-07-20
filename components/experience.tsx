@@ -23,43 +23,44 @@ export default function Experience() {
               </div>
             </header>
 
-            {/* Workstreams as sub-cards along an accent-marked timeline rail. */}
+            {/* Flattened workstreams along a neutral timeline rail. */}
             <div className="relative mt-8">
               <span
                 aria-hidden
                 className="absolute left-2 top-3 bottom-3 w-px -translate-x-1/2 bg-border"
               />
-              <ol className="space-y-5">
+              <ol className="space-y-8">
                 {role.workstreams.map((ws) => (
                   <li key={ws.name} className="relative pl-10">
                     <span
                       aria-hidden
-                      className="absolute left-2 top-6 size-3 -translate-x-1/2 rounded-full border-2 border-accent bg-background"
+                      className="absolute left-2 top-1.5 size-3 -translate-x-1/2 rounded-full border-2 border-border bg-background"
                     />
-                    <div className="rounded-lg border border-border bg-surface p-5 transition-colors hover:border-accent/30">
-                      <h4 className="font-semibold text-foreground">
-                        {ws.name}
-                      </h4>
-                      {ws.summary && (
-                        <p className="mt-0.5 text-sm text-muted">
-                          {ws.summary}
-                        </p>
-                      )}
-                      <ul className="mt-3 space-y-2">
-                        {ws.bullets.map((bullet) => (
-                          <li
-                            key={bullet}
-                            className="flex gap-3 text-[15px] leading-relaxed text-secondary"
-                          >
-                            <span
-                              aria-hidden
-                              className="mt-[0.5625rem] size-1 shrink-0 rounded-full bg-accent/50"
-                            />
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <h4 className="font-semibold text-foreground">
+                      {ws.name}
+                    </h4>
+                    {ws.summary && (
+                      <p className="mt-0.5 text-sm text-muted">{ws.summary}</p>
+                    )}
+                    {ws.result && (
+                      <p className="mt-1 text-[15px] font-semibold text-foreground">
+                        {ws.result}
+                      </p>
+                    )}
+                    <ul className="mt-3 space-y-2">
+                      {ws.bullets.map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="flex gap-3 text-[15px] leading-relaxed text-secondary"
+                        >
+                          <span
+                            aria-hidden
+                            className="mt-[0.5625rem] size-1 shrink-0 rounded-full bg-border"
+                          />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </li>
                 ))}
               </ol>

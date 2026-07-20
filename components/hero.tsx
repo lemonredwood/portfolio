@@ -41,104 +41,104 @@ function ExternalArrow() {
 }
 
 /**
- * Clean, content-first hero: name, role, location, current status, tagline,
- * and a row of clearly labeled links. Fully static server component.
+ * Content-first hero. On desktop it splits into two columns: the narrative
+ * (name, role, status, lede, intro, credentials, actions) on the left and a
+ * quiet "Focus areas" stack on the right. Below `lg` it collapses to a single
+ * column, the focus stack falling in after the actions. Fully static server
+ * component.
  */
 export default function Hero() {
-  const button =
-    "inline-flex min-h-11 items-center gap-2 rounded-lg border border-border bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent";
-
   return (
     <section id="home" className="flex min-h-svh scroll-mt-24 items-center">
       <div className="mx-auto w-full max-w-6xl px-6 py-24">
-        <div className="max-w-3xl">
-          <h1 className="text-5xl font-bold tracking-tight text-balance text-foreground sm:text-6xl">
-            {profile.name}
-          </h1>
+        <div className="grid lg:grid-cols-[1fr_20rem] lg:gap-16">
+          {/* LEFT: narrative + actions. */}
+          <div>
+            <h1 className="text-5xl font-bold tracking-tight text-balance text-foreground sm:text-6xl">
+              {profile.name}
+            </h1>
 
-          <p className="mt-4 text-xl font-medium text-accent">{profile.role}</p>
-          <p className="mt-1 text-base text-muted">{profile.location}</p>
+            <p className="mt-4 text-xl font-medium text-accent">
+              {profile.role}
+            </p>
+            <p className="mt-1 text-base text-muted">{profile.location}</p>
 
-          <p className="mt-6 flex items-baseline gap-2.5 text-base text-secondary">
-            <span
-              aria-hidden
-              className="size-2 shrink-0 self-center rounded-full bg-accent"
-            />
-            {profile.status}
-          </p>
+            <p className="mt-6 flex items-baseline gap-2.5 text-base text-secondary">
+              <span
+                aria-hidden
+                className="size-2 shrink-0 self-center rounded-full bg-accent"
+              />
+              {profile.status}
+            </p>
 
-          <p className="mt-6 max-w-prose text-lg leading-relaxed text-pretty text-secondary sm:text-xl">
-            {profile.tagline}
-          </p>
+            {/* Tagline promoted to the lede. */}
+            <p className="mt-6 max-w-prose text-xl font-medium text-pretty text-foreground sm:text-2xl">
+              {profile.tagline}
+            </p>
 
-          <p className="mt-5 max-w-prose text-[17px] leading-relaxed text-secondary">
-            {profile.intro}
-          </p>
+            <p className="mt-5 max-w-prose text-[17px] leading-relaxed text-secondary">
+              {profile.intro}
+            </p>
 
-          <p className="mt-6 text-base">
-            <span className="font-medium text-accent">
-              {profile.featured.label}:
-            </span>{" "}
-            <a
-              href={profile.featured.href}
-              className="text-foreground transition-colors hover:text-accent"
-            >
-              {profile.featured.text} →
-            </a>
-          </p>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {profile.highlights.map((highlight) => (
+                <li
+                  key={highlight}
+                  className="rounded-full border border-border bg-surface px-3.5 py-1.5 text-[13px] text-secondary"
+                >
+                  {highlight}
+                </li>
+              ))}
+            </ul>
 
-          <ul className="mt-6 flex flex-wrap gap-2">
-            {profile.highlights.map((highlight) => (
-              <li
-                key={highlight}
-                className="rounded-full border border-border bg-surface px-3.5 py-1.5 text-[13px] text-secondary"
+            {/* Resume is the single primary; the rest are quiet text links. */}
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a
+                href={profile.resumeUrl}
+                download
+                className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-background transition-colors hover:bg-accent/85"
               >
-                {highlight}
-              </li>
-            ))}
-          </ul>
-
-          <ul className="mt-10 flex flex-wrap gap-3">
-            {profile.socials.map((social) => {
-              const isExternal = social.href.startsWith("http");
-              return (
-                <li key={social.platform}>
+                <DownloadArrow />
+                Resume (PDF)
+              </a>
+              {profile.socials.map((social) => {
+                const isExternal = social.href.startsWith("http");
+                return (
                   <a
+                    key={social.platform}
                     href={social.href}
                     {...(isExternal
                       ? { target: "_blank", rel: "noreferrer" }
                       : {})}
-                    className={button}
+                    className="inline-flex items-center gap-1 text-sm font-medium text-secondary transition-colors hover:text-accent"
                   >
                     {social.label}
                     {isExternal && <ExternalArrow />}
                   </a>
-                </li>
-              );
-            })}
-            <li>
-              <a href={profile.resumeUrl} download className={button}>
-                <DownloadArrow />
-                Resume (PDF)
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div className="mt-14 grid gap-4 sm:grid-cols-3">
-          {profile.focusAreas.map((area) => (
-            <div
-              key={area.title}
-              className="rounded-lg border border-border bg-surface/50 p-5"
-            >
-              <h3 className="text-[15px] font-semibold text-foreground">
-                {area.title}
-              </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-secondary">
-                {area.blurb}
-              </p>
+                );
+              })}
             </div>
-          ))}
+          </div>
+
+          {/* RIGHT: quiet, borderless focus-areas stack (top rules only). */}
+          <div className="mt-12 lg:mt-0">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-muted">
+              Focus areas
+            </h2>
+            <div className="mt-4 space-y-4">
+              {profile.focusAreas.map((area) => (
+                <div
+                  key={area.title}
+                  className="border-t border-border pt-4"
+                >
+                  <h3 className="text-[15px] font-semibold text-foreground">
+                    {area.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-secondary">{area.blurb}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

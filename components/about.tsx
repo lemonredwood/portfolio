@@ -18,47 +18,6 @@ export default function About() {
           </p>
         ))}
       </div>
-
-      <ul className="mt-10 flex flex-wrap gap-3">
-        {profile.achievements.map((achievement) => {
-          const chip =
-            "inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-[13px] text-foreground";
-          const body = (
-            <>
-              {achievement.label}
-              {achievement.detail ? (
-                <span className="text-muted">
-                  {"· "}
-                  {achievement.detail}
-                </span>
-              ) : null}
-            </>
-          );
-
-          return (
-            <li key={achievement.label}>
-              {achievement.href ? (
-                <a
-                  href={achievement.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  title={achievement.detail}
-                  className={`${chip} transition-colors hover:border-accent hover:text-accent`}
-                >
-                  {body}
-                  <span aria-hidden className="text-accent">
-                    ↗
-                  </span>
-                </a>
-              ) : (
-                <span className={chip} title={achievement.detail}>
-                  {body}
-                </span>
-              )}
-            </li>
-          );
-        })}
-      </ul>
     </Section>
   );
 }

@@ -66,7 +66,7 @@ export default function Projects() {
         {profile.projects.map((project) => (
           <article
             key={project.name}
-            className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_-14px_rgba(34,211,238,0.4)]"
+            className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent/40"
           >
             <div className="flex items-start justify-between gap-3">
               <h3 className="text-lg font-semibold tracking-tight text-foreground">
@@ -87,7 +87,7 @@ export default function Projects() {
                 >
                   <span
                     aria-hidden
-                    className="mt-[0.5625rem] size-1 shrink-0 rounded-full bg-accent/50"
+                    className="mt-[0.5625rem] size-1 shrink-0 rounded-full bg-border"
                   />
                   <span>{bullet}</span>
                 </li>
@@ -124,7 +124,7 @@ export default function Projects() {
         href="https://github.com/lemonredwood"
         target="_blank"
         rel="noreferrer"
-        className="group mt-6 flex items-center justify-between gap-4 rounded-xl border border-border bg-surface px-6 py-5 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_40px_-14px_rgba(34,211,238,0.4)]"
+        className="group mt-6 flex items-center justify-between gap-4 rounded-xl border border-border bg-surface px-6 py-5 transition-colors hover:border-accent/40"
       >
         <span className="text-[15px] font-medium text-foreground transition-colors group-hover:text-accent">
           See more of my work on GitHub

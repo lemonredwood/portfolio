@@ -31,7 +31,7 @@ export default function Contact() {
         </h3>
         <a
           href={`mailto:${profile.email}`}
-          className="mt-4 inline-block break-all text-xl font-medium text-accent underline decoration-accent/30 underline-offset-4 transition-colors hover:decoration-accent sm:text-2xl"
+          className="mt-4 inline-block break-all font-sans text-2xl font-semibold text-foreground underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent sm:text-3xl"
         >
           {profile.email}
         </a>

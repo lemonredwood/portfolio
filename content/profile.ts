@@ -23,15 +23,10 @@ export const profile: Profile = {
   highlights: [
     "1.5 years of AI research at Stryker",
     "Kaggle Expert",
+    "2nd Runner-up, Hacktomania (IEEE COMPSOC)",
     "4 hackathon builds",
     "CGPA 8.96, CS (AI/ML)",
   ],
-
-  featured: {
-    label: "Currently researching",
-    text: "ClinJudge, an audit harness for LLM-as-judge evaluators of clinical AI",
-    href: "#projects",
-  },
 
   focusAreas: [
     { title: "Deep Learning & Computer Vision", blurb: "Models that hold up on real sensor data, from pose estimation to live surgical workflows." },
@@ -94,7 +89,7 @@ export const profile: Profile = {
       ],
     },
     {
-      name: "Cloud & Other",
+      name: "Cloud & Tools",
       skills: ["Azure", "Android Development", "MySQL", "Front-end Web"],
     },
     {
@@ -121,18 +116,19 @@ export const profile: Profile = {
         {
           name: "Battery Prognostics",
           summary: "Li-ion battery health forecasting",
+          result: "0.0301 MAE on remaining-useful-life prediction",
           bullets: [
             "Built Physics-Informed Neural Networks in PyTorch, encoding electrochemical constraints directly into the model.",
-            "Reached 0.0301 MAE on remaining-useful-life (RUL) prediction.",
             "Modeled degradation with regression and polynomial-fit lifecycle analysis.",
           ],
         },
         {
           name: "Procuity",
           summary: "Pressure-injury reduction",
+          result: "96.24% posture-classification accuracy",
           bullets: [
             "Owned the ML pipeline end to end, from inception through feasibility exit, running MLOps on Azure.",
-            "Combined sensor-based pose estimation with an ensemble of four deep models and CatBoost, hitting 96.24% posture-classification accuracy.",
+            "Combined sensor-based pose estimation with an ensemble of four deep models and CatBoost.",
             "Engineered 75+ spatial, temporal, and respiratory features using dual-window processing.",
           ],
         },
@@ -209,21 +205,6 @@ export const profile: Profile = {
       ],
       stack: ["Next.js", "Python", "AssemblyAI", "Ollama", "LLaMA 3 8B", "RAG"],
       badge: "Cosmonova Hackathon",
-    },
-  ],
-
-  achievements: [
-    {
-      label: "Kaggle Expert",
-      href: "https://www.kaggle.com/therohithanand",
-    },
-    {
-      label: "2nd Runner-up, Hacktomania",
-      detail: "IEEE COMPSOC",
-    },
-    {
-      label: "4 hackathons",
-      detail: "Cosmonova, Intel GenAI, Brighter India, V-Strykathon",
     },
   ],
 
