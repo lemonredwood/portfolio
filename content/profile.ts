@@ -153,6 +153,10 @@ export const profile: Profile = {
         "Counterfactual method: fix the answer, vary patient demographics, read any verdict change as bias.",
         "Validity battery against a human anchor plus a cached, resumable judging CLI.",
       ],
+      moreBullets: [
+        "Also checks error equity: whether a judge's measurement error is distributed evenly across patient groups.",
+        "The judging CLI is cached and resumable against any OpenAI-compatible endpoint, so every analysis re-runs from local artifacts without re-querying models.",
+      ],
       stack: ["Python", "pytest", "uv", "vLLM", "Ollama", "Transformers"],
       badge: "Research · in progress",
       repo: {
@@ -187,6 +191,9 @@ export const profile: Profile = {
         "Live speech to text with emotion and tone classification at 93.4% accuracy.",
         "Fires Twilio and geolocation alerts when danger is detected.",
       ],
+      moreBullets: [
+        "Scans transcripts through custom keyword-based risk pipelines to flag potentially dangerous or emergency situations.",
+      ],
       stack: [
         "AssemblyAI",
         "Hugging Face Transformers",
@@ -202,6 +209,9 @@ export const profile: Profile = {
       bullets: [
         "Voice-driven Q&A built on Next.js and Python with AssemblyAI speech.",
         "Retrieval-augmented answers from LLaMA 3 8B running locally via Ollama.",
+      ],
+      moreBullets: [
+        "Every answer is grounded in embedded NASA and Google Scholar datasets, including scientific CSVs and graphical readings.",
       ],
       stack: ["Next.js", "Python", "AssemblyAI", "Ollama", "LLaMA 3 8B", "RAG"],
       badge: "Cosmonova Hackathon",

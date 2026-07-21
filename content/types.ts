@@ -71,6 +71,11 @@ export interface Project {
   readonly blurb: string;
   /** Highlight bullets (typically 3–4). */
   readonly bullets: readonly string[];
+  /**
+   * Additional detail shown behind a disclosure ("more detail"). Omit the field
+   * entirely for projects with nothing further to add.
+   */
+  readonly moreBullets?: readonly string[];
   /** Tech-stack tags rendered as mono chips. */
   readonly stack: readonly string[];
   /** Optional pill, e.g. "LIVE" or "Intel GenAI Hackathon". */

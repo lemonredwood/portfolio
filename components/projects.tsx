@@ -57,6 +57,38 @@ function Badge({ label }: { label: string }) {
   );
 }
 
+/** Down chevron for the "more detail" disclosure; flips when the parent
+    `<details>` is open. Decorative, so hidden from assistive tech. */
+function DisclosureChevron() {
+  return (
+    <svg
+      viewBox="0 0 12 12"
+      className="size-3 shrink-0 transition-transform duration-200 group-open/more:rotate-180"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      aria-hidden
+    >
+      <path d="M3 4.5 6 7.5 9 4.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** One bullet row: a dot plus text. Shared by a card's main bullets and its
+    "more detail" disclosure so the expanded bullets read as one continuous
+    list rather than a different component. */
+function Bullet({ children }: { children: string }) {
+  return (
+    <li className="flex gap-3 text-[15px] leading-relaxed text-secondary">
+      <span
+        aria-hidden
+        className="mt-[0.5625rem] size-1 shrink-0 rounded-full bg-border"
+      />
+      <span>{children}</span>
+    </li>
+  );
+}
+
 export default function Projects() {
   return (
     <Section id="projects" label="Projects">
@@ -81,18 +113,25 @@ export default function Projects() {
 
             <ul className="mt-4 space-y-2">
               {project.bullets.map((bullet) => (
-                <li
-                  key={bullet}
-                  className="flex gap-3 text-[15px] leading-relaxed text-secondary"
-                >
-                  <span
-                    aria-hidden
-                    className="mt-[0.5625rem] size-1 shrink-0 rounded-full bg-border"
-                  />
-                  <span>{bullet}</span>
-                </li>
+                <Bullet key={bullet}>{bullet}</Bullet>
               ))}
             </ul>
+
+            {/* Extra detail behind a native (zero-JS) disclosure, shown only
+                when the project actually has more to say. */}
+            {project.moreBullets && project.moreBullets.length > 0 && (
+              <details className="group/more mt-3">
+                <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent/80 [&::-webkit-details-marker]:hidden">
+                  More detail
+                  <DisclosureChevron />
+                </summary>
+                <ul className="mt-3 space-y-2">
+                  {project.moreBullets.map((bullet) => (
+                    <Bullet key={bullet}>{bullet}</Bullet>
+                  ))}
+                </ul>
+              </details>
+            )}
 
             {/* Stack chips + links pinned to the card foot so cards align. */}
             <div className="mt-auto pt-5">
