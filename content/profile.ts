@@ -8,17 +8,17 @@ import type { Profile } from "./types";
 export const profile: Profile = {
   name: "Rohith Anand",
   role: "Incoming MSc in Data Science @ Trinity College Dublin",
-  location: "Bangalore, India",
+  location: "Dublin, Ireland",
   email: "therohithanand@gmail.com",
 
   tagline:
     "I build ML systems that ship: deep learning, computer vision, and NLP, from research to production.",
 
   status:
-    "Wrapping up at Stryker · moving to Dublin in Sept 2026 · open to ML/data opportunities",
+    "Based in Dublin · starting my MSc at Trinity College Dublin in Sept 2026 · open to ML/data opportunities",
 
   intro:
-    "I'm Rohith, a machine learning engineer moving from industry research into graduate study. Over the past year and a half at Stryker I took healthcare ML systems from first prototype to feasibility, owning the data, the modeling, and the trade-offs along the way. That work taught me what I now optimize for: models that hold up outside the lab, pipelines that other people can run, and claims that survive validation. This September I begin an MSc in Data Science at Trinity College Dublin, and alongside it I'm researching how reliably large language models judge clinical AI.",
+    "I'm Rohith, a machine learning engineer moving from industry research into graduate study. Over the past year and a half at Stryker I took healthcare ML systems from first prototype to feasibility, owning the data, the modeling, and the trade-offs along the way. That work taught me what I now optimize for: models that hold up outside the lab, pipelines that other people can run, and claims that survive validation. Having recently relocated to Dublin, I begin an MSc in Data Science at Trinity College Dublin this September, and alongside it I'm researching how reliably large language models judge clinical AI.",
 
   highlights: [
     "1.5 years of AI research at Stryker",
@@ -281,7 +281,12 @@ export const profile: Profile = {
       kind: "next",
     },
     {
-      date: "Jul 2026",
+      date: "Aug 2026",
+      title: "Relocated to Dublin, Ireland",
+      kind: "education",
+    },
+    {
+      date: "31 Jul 2026",
       title: "Wrapped up as AI Research Associate at Stryker",
       kind: "work",
     },
