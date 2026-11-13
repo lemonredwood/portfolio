@@ -1,6 +1,6 @@
 import Section from "./section";
 import { profile } from "@/content/profile";
-import type { Link } from "@/content/types";
+import type { Link, Project } from "@/content/types";
 
 /** Up-right arrow marking a link that opens in a new tab. */
 function ExternalArrow() {
@@ -36,47 +36,27 @@ function ProjectLink({ link }: { link: Link }) {
   );
 }
 
+/** Small eyebrow label above the title; "LIVE" gets the accent and a pulse. */
 function Badge({ label }: { label: string }) {
-  // "LIVE" reads as an accent pill with a pulsing dot; everything else
-  // (hackathon labels) is a neutral pill.
-  if (label === "LIVE") {
-    return (
-      <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wide text-accent">
+  const isLive = label === "LIVE";
+  return (
+    <p
+      className={`flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider ${
+        isLive ? "text-accent" : "text-muted"
+      }`}
+    >
+      {isLive && (
         <span className="relative flex size-1.5">
           <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-75 motion-reduce:hidden" />
           <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
         </span>
-        {label}
-      </span>
-    );
-  }
-  return (
-    <span className="inline-flex items-center rounded-full border border-border bg-background px-2.5 py-1 text-[11px] font-medium text-muted">
+      )}
       {label}
-    </span>
+    </p>
   );
 }
 
-/** Down chevron for the "more detail" disclosure; flips when the parent
-    `<details>` is open. Decorative, so hidden from assistive tech. */
-function DisclosureChevron() {
-  return (
-    <svg
-      viewBox="0 0 12 12"
-      className="size-3 shrink-0 transition-transform duration-200 group-open/more:rotate-180"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      aria-hidden
-    >
-      <path d="M3 4.5 6 7.5 9 4.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
-/** One bullet row: a dot plus text. Shared by a card's main bullets and its
-    "more detail" disclosure so the expanded bullets read as one continuous
-    list rather than a different component. */
 function Bullet({ children }: { children: string }) {
   return (
     <li className="flex gap-3 text-[15px] leading-relaxed text-secondary">
@@ -89,70 +69,59 @@ function Bullet({ children }: { children: string }) {
   );
 }
 
+function ProjectBody({ project }: { project: Project }) {
+  return (
+    <>
+      {project.badge && <Badge label={project.badge} />}
+      <h3 className="mt-2 text-lg font-semibold tracking-tight text-foreground">
+        {project.name}
+      </h3>
+
+      <p className="mt-2 text-[15px] leading-relaxed text-secondary">
+        {project.blurb}
+      </p>
+
+      <ul className="mt-4 space-y-2">
+        {project.bullets.map((bullet) => (
+          <Bullet key={bullet}>{bullet}</Bullet>
+        ))}
+      </ul>
+
+      {/* Pinned to the card foot so cards in a row align. */}
+      <div className="mt-auto pt-5">
+        <ul className="flex flex-wrap gap-1.5">
+          {project.stack.map((tech) => (
+            <li
+              key={tech}
+              className="rounded border border-border bg-background px-2 py-0.5 font-mono text-xs text-muted"
+            >
+              {tech}
+            </li>
+          ))}
+        </ul>
+
+        {(project.live || project.repo) && (
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-4 text-sm font-medium">
+            {project.live && <ProjectLink link={project.live} />}
+            {project.repo && <ProjectLink link={project.repo} />}
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
+
 export default function Projects() {
   return (
     <Section id="projects" label="Projects">
-      {/* Four cards laid out 2×2 (from `sm` up) so the grid never orphans a
-          lone card in a trailing row. */}
-      <div className="grid gap-6 sm:grid-cols-2">
+      {/* Six cards: 2×3 on tablet, 3×2 on desktop, so no row is orphaned. */}
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {profile.projects.map((project) => (
           <article
             key={project.name}
-            className="group flex h-full flex-col rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent/40"
+            className="flex flex-col rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent/40"
           >
-            <div className="flex items-start justify-between gap-3">
-              <h3 className="text-lg font-semibold tracking-tight text-foreground">
-                {project.name}
-              </h3>
-              {project.badge && <Badge label={project.badge} />}
-            </div>
-
-            <p className="mt-2 text-[15px] leading-relaxed text-secondary">
-              {project.blurb}
-            </p>
-
-            <ul className="mt-4 space-y-2">
-              {project.bullets.map((bullet) => (
-                <Bullet key={bullet}>{bullet}</Bullet>
-              ))}
-            </ul>
-
-            {/* Extra detail behind a native (zero-JS) disclosure, shown only
-                when the project actually has more to say. */}
-            {project.moreBullets && project.moreBullets.length > 0 && (
-              <details className="group/more mt-3">
-                <summary className="inline-flex cursor-pointer list-none items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent/80 [&::-webkit-details-marker]:hidden">
-                  More detail
-                  <DisclosureChevron />
-                </summary>
-                <ul className="mt-3 space-y-2">
-                  {project.moreBullets.map((bullet) => (
-                    <Bullet key={bullet}>{bullet}</Bullet>
-                  ))}
-                </ul>
-              </details>
-            )}
-
-            {/* Stack chips + links pinned to the card foot so cards align. */}
-            <div className="mt-auto pt-5">
-              <ul className="flex flex-wrap gap-2">
-                {project.stack.map((tech) => (
-                  <li
-                    key={tech}
-                    className="rounded border border-border bg-background px-2 py-1 font-mono text-[13px] text-muted"
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
-
-              {(project.live || project.repo) && (
-                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-4 text-sm font-medium">
-                  {project.live && <ProjectLink link={project.live} />}
-                  {project.repo && <ProjectLink link={project.repo} />}
-                </div>
-              )}
-            </div>
+            <ProjectBody project={project} />
           </article>
         ))}
       </div>

@@ -1,3 +1,4 @@
+import LoopingGif from "./looping-gif";
 import Section from "./section";
 import { profile } from "@/content/profile";
 
@@ -22,6 +23,15 @@ export default function Experience() {
                 {role.location && <p className="mt-0.5">{role.location}</p>}
               </div>
             </header>
+
+            {/* Cropped to the GIF's centre band, where the pipeline sits. */}
+            <LoopingGif
+              name="ml-pipeline"
+              alt=""
+              width={800}
+              height={450}
+              className="mt-8 aspect-[5/1] w-full max-w-2xl rounded-xl border border-border object-cover print:hidden"
+            />
 
             {/* Flattened workstreams along a neutral timeline rail. */}
             <div className="relative mt-8">

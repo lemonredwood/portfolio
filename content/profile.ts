@@ -15,28 +15,27 @@ export const profile: Profile = {
     "I build ML systems that ship: deep learning, computer vision, and NLP, from research to production.",
 
   status:
-    "Ex-Research Associate at Stryker · Current MSc Data Science Student at Trinity College Dublin · open to ML/data opportunities",
+    "Ex-Research Associate at Stryker · open to ML/data opportunities",
 
   intro:
-    "I'm Rohith, a machine learning engineer moving from industry research into graduate study. Over the past year and a half at Stryker I took healthcare ML systems from first prototype to feasibility, owning the data, the modeling, and the trade-offs along the way. That work taught me what I now optimize for: models that hold up outside the lab, pipelines that other people can run, and claims that survive validation. Having recently relocated to Dublin, I begin an MSc in Data Science at Trinity College Dublin this September, and alongside it I'm researching how reliably large language models judge clinical AI.",
+    "Over a year and a half at Stryker I took healthcare ML systems from first prototype to feasibility. Now in Dublin for my MSc, I'm also researching how reliably large language models judge clinical AI.",
 
   highlights: [
     "1.5 years of AI research at Stryker",
     "Kaggle Expert",
     "2nd Runner-up, Hacktomania (IEEE COMPSOC)",
-    "4 hackathon builds",
     "CGPA 8.96, CS (AI/ML)",
   ],
 
   focusAreas: [
-    { title: "Deep Learning & Computer Vision", blurb: "Models that hold up on real sensor data, from pose estimation to live surgical workflows." },
-    { title: "ML Systems & MLOps", blurb: "Pipelines owned end to end, from first prototype to feasibility exit, with MLOps on Azure." },
-    { title: "LLM Evaluation Research", blurb: "Auditing LLM-as-judge evaluators for demographic bias and measurement validity." },
+    { title: "Deep Learning & Computer Vision", blurb: "From pose estimation to live surgical workflows." },
+    { title: "ML Systems & MLOps", blurb: "Pipelines owned end to end, on Azure." },
+    { title: "LLM Evaluation Research", blurb: "Auditing LLM judges for bias and validity." },
   ],
 
   about: [
-    "At Stryker's Global Technology Center in Bangalore I built physics-informed networks that forecast Li-ion battery health, pose-estimation pipelines that flag pressure-injury risk, and computer-vision datasets drawn from live surgical workflows. Procuity, the largest of these, also had me running MLOps on Azure.",
-    "Underneath the projects: a BTech in Computer Science with an AI/ML specialization from Vellore Institute of Technology, Chennai (CGPA 8.96), Kaggle Expert rank, and a habit of sweating the small details, because those are what decide whether a system ships.",
+    "I optimize for models that hold up outside the lab, pipelines that other people can run, and claims that survive validation.",
+    "Behind that: a BTech in Computer Science (AI/ML) from Vellore Institute of Technology, Chennai, Kaggle Expert rank, and a habit of sweating the small details, because those decide whether a system ships.",
   ],
 
   socials: [
@@ -92,18 +91,6 @@ export const profile: Profile = {
       name: "Cloud & Tools",
       skills: ["Azure", "Android Development", "MySQL", "Front-end Web"],
     },
-    {
-      name: "Core CS Coursework",
-      skills: [
-        "Data Structures & Algorithms",
-        "Operating Systems",
-        "Computer Networks",
-        "Database Systems",
-        "Compiler Design",
-        "Cryptography & Network Security",
-        "Theory of Computation",
-      ],
-    },
   ],
 
   experience: [
@@ -153,15 +140,22 @@ export const profile: Profile = {
         "Counterfactual method: fix the answer, vary patient demographics, read any verdict change as bias.",
         "Validity battery against a human anchor plus a cached, resumable judging CLI.",
       ],
-      moreBullets: [
-        "Also checks error equity: whether a judge's measurement error is distributed evenly across patient groups.",
-        "The judging CLI is cached and resumable against any OpenAI-compatible endpoint, so every analysis re-runs from local artifacts without re-querying models.",
-      ],
       stack: ["Python", "pytest", "uv", "vLLM", "Ollama", "Transformers"],
       badge: "Research · in progress",
+    },
+    {
+      name: "Drone Reforestation Planner",
+      blurb:
+        "Turns drone imagery into a planting plan that avoids trees, roads and steep slopes.",
+      bullets: [
+        "Detects existing trees with DeepForest and builds a canopy height model from DSM/DTM rasters.",
+        "Plans and simulates the drone's planting path over viable ground.",
+      ],
+      stack: ["Python", "rasterio", "DeepForest", "OpenCV", "OpenDroneMap"],
+      badge: "Computer Vision",
       repo: {
         label: "Source",
-        href: "https://github.com/lemonredwood/ClinJudge",
+        href: "https://github.com/lemonredwood/drone-based-reforestation",
       },
     },
     {
@@ -191,9 +185,6 @@ export const profile: Profile = {
         "Live speech to text with emotion and tone classification at 93.4% accuracy.",
         "Fires Twilio and geolocation alerts when danger is detected.",
       ],
-      moreBullets: [
-        "Scans transcripts through custom keyword-based risk pipelines to flag potentially dangerous or emergency situations.",
-      ],
       stack: [
         "AssemblyAI",
         "Hugging Face Transformers",
@@ -210,11 +201,23 @@ export const profile: Profile = {
         "Voice-driven Q&A built on Next.js and Python with AssemblyAI speech.",
         "Retrieval-augmented answers from LLaMA 3 8B running locally via Ollama.",
       ],
-      moreBullets: [
-        "Every answer is grounded in embedded NASA and Google Scholar datasets, including scientific CSVs and graphical readings.",
-      ],
       stack: ["Next.js", "Python", "AssemblyAI", "Ollama", "LLaMA 3 8B", "RAG"],
       badge: "Cosmonova Hackathon",
+    },
+    {
+      name: "IMD Weather Agent",
+      blurb:
+        "A local-LLM agent that reads India Meteorological Department bulletins and answers weather questions.",
+      bullets: [
+        "ReAct agent that parses the latest IMD bulletin PDFs into structured rainfall data.",
+        "Gemma 2B LoRA-tuned on tool-use traces to learn the agent's reasoning format.",
+      ],
+      stack: ["Python", "LangChain", "llama.cpp", "PEFT / LoRA", "PyMuPDF"],
+      badge: "Agentic AI Hackathon",
+      repo: {
+        label: "Source",
+        href: "https://github.com/lemonredwood/agentic-ai-hackathon",
+      },
     },
   ],
 
@@ -240,8 +243,7 @@ export const profile: Profile = {
     {
       institution: "Trinity College Dublin",
       degree: "MSc in Data Science",
-      period: "From Sept 2026",
-      status: "incoming",
+      period: "Sept 2026 – Present",
     },
     {
       institution: "Vellore Institute of Technology, Chennai",
@@ -277,12 +279,7 @@ export const profile: Profile = {
   timeline: [
     {
       date: "Sept 2026",
-      title: "MSc in Data Science, Trinity College Dublin",
-      kind: "next",
-    },
-    {
-      date: "Aug 2026",
-      title: "Relocated to Dublin, Ireland",
+      title: "Started MSc in Data Science, Trinity College Dublin",
       kind: "education",
     },
     {
@@ -301,11 +298,6 @@ export const profile: Profile = {
       title: "Joined Stryker",
       detail: "Bangalore, India",
       kind: "work",
-    },
-    {
-      date: "Sept 2022",
-      title: "Started BTech at Vellore Institute of Technology, Chennai",
-      kind: "education",
     },
   ],
 
