@@ -1,3 +1,4 @@
+import LoopingGif from "./looping-gif";
 import Section from "./section";
 import { profile } from "@/content/profile";
 
@@ -24,46 +25,57 @@ function DownloadArrow() {
 export default function Contact() {
   return (
     <Section id="contact" label="Contact">
-      {/* Invitation — the email is the accent centrepiece. */}
-      <div>
-        <h3 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-          Let&apos;s build something.
-        </h3>
-        <a
-          href={`mailto:${profile.email}`}
-          className="mt-4 inline-block break-all font-sans text-2xl font-semibold text-foreground underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent sm:text-3xl"
-        >
-          {profile.email}
-        </a>
-      </div>
+      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_24rem]">
+        <div>
+          {/* Invitation — the email is the accent centrepiece. */}
+          <div>
+            <h3 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              Let&apos;s build something.
+            </h3>
+            <a
+              href={`mailto:${profile.email}`}
+              className="mt-4 inline-block break-all font-sans text-2xl font-semibold text-foreground underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent sm:text-3xl"
+            >
+              {profile.email}
+            </a>
+          </div>
 
-      {/* Social + contact links. */}
-      <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
-        {profile.socials
-          .filter((social) => social.platform !== "email")
-          .map((social) => (
-            <li key={social.platform}>
-              <a
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                className="text-secondary transition-colors hover:text-accent"
-              >
-                {social.label}
-              </a>
-            </li>
-          ))}
-      </ul>
+          {/* Social + contact links. */}
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
+            {profile.socials
+              .filter((social) => social.platform !== "email")
+              .map((social) => (
+                <li key={social.platform}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-secondary transition-colors hover:text-accent"
+                  >
+                    {social.label}
+                  </a>
+                </li>
+              ))}
+          </ul>
 
-      <div className="mt-8">
-        <a
-          href={profile.resumeUrl}
-          download
-          className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-        >
-          <DownloadArrow />
-          Resume (PDF)
-        </a>
+          <div className="mt-8">
+            <a
+              href={profile.resumeUrl}
+              download
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              <DownloadArrow />
+              Resume (PDF)
+            </a>
+          </div>
+        </div>
+        <LoopingGif
+          name="data-pipeline"
+          alt=""
+          width={518}
+          height={207}
+          className="h-auto w-full max-w-md lg:max-w-none print:hidden"
+        />
       </div>
 
       {/* Footer — certificates, societies. Small and muted. */}
