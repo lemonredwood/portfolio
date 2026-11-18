@@ -12,7 +12,7 @@ export const profile: Profile = {
   email: "therohithanand@gmail.com",
 
   tagline:
-    "I build ML systems that ship: deep learning, computer vision, and NLP, from research to production.",
+    "I build ML systems that hold up outside the lab: deep learning, computer vision, and NLP, from research prototype to feasibility.",
 
   status:
     "Ex-Research Associate at Stryker · open to ML/data opportunities",
@@ -29,7 +29,7 @@ export const profile: Profile = {
 
   focusAreas: [
     { title: "Deep Learning & Computer Vision", blurb: "From pose estimation to live surgical workflows." },
-    { title: "ML Systems & MLOps", blurb: "Pipelines owned end to end, on Azure." },
+    { title: "ML Systems & MLOps", blurb: "Feature engineering, training and evaluation pipelines." },
     { title: "LLM Evaluation Research", blurb: "Auditing LLM judges for bias and validity." },
   ],
 
@@ -64,18 +64,18 @@ export const profile: Profile = {
   skills: [
     {
       name: "Languages",
-      skills: ["Python", "R", "Java", "Kotlin", "C / C++", "SQL"],
+      skills: ["Python", "SQL", "R", "Java", "C++", "TypeScript"],
     },
     {
       name: "ML / DL",
       skills: [
         "PyTorch",
         "TensorFlow",
-        "Keras",
         "scikit-learn",
         "XGBoost",
+        "CatBoost",
+        "Hugging Face",
         "OpenCV",
-        "MLOps",
       ],
     },
     {
@@ -88,8 +88,17 @@ export const profile: Profile = {
       ],
     },
     {
-      name: "Cloud & Tools",
-      skills: ["Azure", "Android Development", "MySQL", "Front-end Web"],
+      name: "Data & Tools",
+      skills: [
+        "Pandas",
+        "NumPy",
+        "PostgreSQL",
+        "MySQL",
+        "Docker",
+        "Kubernetes",
+        "Azure",
+        "Git / CI/CD",
+      ],
     },
   ],
 
@@ -110,13 +119,14 @@ export const profile: Profile = {
           ],
         },
         {
-          name: "Procuity",
+          name: "ProCuity",
           summary: "Pressure-injury reduction",
           result: "96.24% posture-classification accuracy",
           bullets: [
-            "Owned the ML pipeline end to end, from inception through feasibility exit, running MLOps on Azure.",
+            "Took the feature to a successful feasibility exit in a 3-person team, owning feature engineering and the training and evaluation pipeline.",
             "Combined sensor-based pose estimation with an ensemble of four deep models and CatBoost.",
             "Engineered 75+ spatial, temporal, and respiratory features using dual-window processing.",
+            "Lifted the hardest posture class from 78.6% to 94.2% on out-of-distribution patients with real-time per-patient normalisation (Welford's algorithm), no retraining.",
           ],
         },
         {
@@ -159,23 +169,15 @@ export const profile: Profile = {
       },
     },
     {
-      name: "The Grind",
+      name: "TenderLens",
       blurb:
-        "A live, multiplayer LeetCode tracker for grinding problems with friends in real time.",
+        "Procurement intelligence over Irish public tenders: search and RAG on EU TED notices.",
       bullets: [
-        "Group progress syncs across everyone in real time on Supabase.",
-        "Live on GitHub Pages and in production use today.",
+        "Resumable, idempotent ingestion of 12 months of TED notices into normalised Postgres, re-runnable from raw JSON.",
+        "pgvector schema ready for hybrid search and cited RAG answers, with join keys for the CRO company register.",
       ],
-      stack: ["Supabase", "Realtime", "GitHub Pages"],
-      badge: "LIVE",
-      live: {
-        label: "Live site",
-        href: "https://lemonredwood.github.io/the-grind/",
-      },
-      repo: {
-        label: "Source",
-        href: "https://github.com/lemonredwood/the-grind",
-      },
+      stack: ["Python", "PostgreSQL", "pgvector", "httpx", "Docker", "pytest"],
+      badge: "In progress",
     },
     {
       name: "DraupECHO",

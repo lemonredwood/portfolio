@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rohith Anand – Resume</title>
+<style>
+  @page { size: A4; margin: 9mm 12mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Helvetica Neue", Arial, sans-serif; font-size: 9.3pt; line-height: 1.28; color: #111; margin: 0; }
+  h1 { font-size: 19pt; margin: 0; letter-spacing: 0.5px; text-align: center; }
+  .contact { text-align: center; margin: 3px 0 2px; font-size: 9pt; }
+  .contact a { color: #111; text-decoration: none; }
+  h2 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: 0.8px; border-bottom: 1px solid #333; margin: 7px 0 3px; padding-bottom: 1px; }
+  .row { display: flex; justify-content: space-between; gap: 10px; }
+  .row b { font-weight: 700; }
+  .sub { font-style: italic; }
+  .ws { font-weight: 700; margin: 3px 0 0; }
+  ul { margin: 1px 0 3px; padding-left: 15px; }
+  li { margin: 0.5px 0; }
+  .item { margin-bottom: 3px; }
+  .tech { color: #333; }
+  p { margin: 1px 0; }
+</style>
+</head>
+<body>
+<h1>ROHITH ANAND</h1>
+<div class="contact">
+  Dublin, Ireland &nbsp;|&nbsp; <a href="mailto:therohithanand@gmail.com">therohithanand@gmail.com</a> &nbsp;|&nbsp;
+  <a href="https://rohithanand.vercel.app">rohithanand.vercel.app</a> &nbsp;|&nbsp;
+  <a href="https://github.com/lemonredwood">github.com/lemonredwood</a> &nbsp;|&nbsp;
+  <a href="https://www.linkedin.com/in/lemonredwood">linkedin.com/in/lemonredwood</a>
+</div>
+
+<h2>Education</h2>
+<div class="item">
+  <div class="row"><b>Trinity College Dublin</b><span>Dublin, Ireland</span></div>
+  <div class="row"><span class="sub">MSc in Computer Science (Data Science)</span><span>Sept 2026 – Present</span></div>
+</div>
+<div class="item">
+  <div class="row"><b>Vellore Institute of Technology (VIT), Chennai</b><span>Chennai, India</span></div>
+  <div class="row"><span class="sub">BTech in Computer Science, specialisation in AI/ML — CGPA 8.96</span><span>Sept 2022 – July 2026</span></div>
+</div>
+
+<h2>Work Experience</h2>
+<div class="item">
+  <div class="row"><b>Stryker Global Technology Center (SGTC)</b><span>Bangalore, India</span></div>
+  <div class="row"><span class="sub">AI Research Associate</span><span>Feb 2025 – July 2026</span></div>
+  <p class="ws">Procuity — Pressure Injury Reduction System</p>
+  <ul>
+    <li>Owned the ML pipeline from inception through a successful feasibility exit, running MLOps on Azure.</li>
+    <li>Built a monitoring system using sensor-based pose estimation and an ensemble of 4 deep models and CatBoost, reaching <b>96.24% accuracy</b> in posture classification.</li>
+    <li>Engineered 75+ spatial, temporal and respiratory features (e.g. CoG velocity, respiratory shifts) with a dual-window processing strategy.</li>
+  </ul>
+  <p class="ws">Battery Prognostics — Li-ion Health Forecasting</p>
+  <ul>
+    <li>Developed Physics-Informed Neural Networks in PyTorch with electrochemical constraints, achieving <b>0.0301 MAE</b> in remaining-useful-life prediction.</li>
+    <li>Applied regression and polynomial fitting to analyse battery performance across the product lifecycle.</li>
+  </ul>
+  <p class="ws">Hospital Status Automation &amp; Archer</p>
+  <ul>
+    <li>Orchestrated large-scale annotation of biomedical equipment and patient environments, and built a high-fidelity computer-vision dataset of live surgical workflows for automated hospital status tracking.</li>
+  </ul>
+</div>
+
+<h2>Projects</h2>
+<div class="item">
+  <div class="row"><span><b>ClinJudge</b> — Auditing LLM-as-judge evaluators of clinical AI</span><span>Research, in progress</span></div>
+  <ul>
+    <li>Counterfactual bias test: fix the answer, vary patient demographics, and measure verdict changes; plus a validity battery against a human anchor and error-equity checks across patient groups.</li>
+    <li>Cached, resumable judging CLI for any OpenAI-compatible endpoint. <span class="tech">Python, vLLM, Ollama, Transformers, pytest</span></li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span><b>Drone Reforestation Planner</b> — Computer vision for planting plans</span><span>2025</span></div>
+  <ul>
+    <li>Detected existing trees with DeepForest, built canopy height models from DSM/DTM rasters, and masked out roads and steep slopes to find viable planting ground.</li>
+    <li>Planned and simulated the drone's planting path. <span class="tech">Python, rasterio, DeepForest, OpenCV, OpenDroneMap</span></li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span><b>IMD Weather Agent</b> — Agentic AI Hackathon</span><span>2025</span></div>
+  <ul>
+    <li>Built a local-LLM ReAct agent whose tools find India Meteorological Department press-release PDFs and parse them into structured rainfall data.</li>
+    <li>LoRA fine-tuned Gemma 2B on tool-use traces to teach the agent format. <span class="tech">LangChain, llama.cpp, PEFT/TRL, PyMuPDF</span></li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span><b>DraupECHO</b> — Real-time audio danger detection, Intel GenAI Hackathon</span><span>Sep – Oct 2024</span></div>
+  <ul>
+    <li>Live speech-to-text (AssemblyAI) with Hugging Face emotion/tone classification at <b>93.4% accuracy</b>, keyword risk pipelines, and Twilio + geolocation emergency alerts.</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span><b>Spatial Speak</b> — Voice assistant for space-agriculture research, Cosmonova Hackathon</span><span>Feb 2025</span></div>
+  <ul>
+    <li>Voice and text Q&amp;A (Next.js, Python, AssemblyAI) with RAG over NASA and Google Scholar data using LLaMA 3 8B running locally via Ollama.</li>
+  </ul>
+</div>
+<div class="item">
+  <div class="row"><span><b>The Grind</b> — Live multiplayer LeetCode tracker</span><span>2026</span></div>
+  <ul>
+    <li>Real-time group progress sync on Supabase; deployed on GitHub Pages and in daily use.</li>
+  </ul>
+</div>
+
+<h2>Skills</h2>
+<p><b>Languages:</b> Python, SQL, Java, Kotlin, C/C++, R</p>
+<p><b>ML / AI:</b> PyTorch, TensorFlow, Keras, scikit-learn, XGBoost, CatBoost, OpenCV, Hugging Face Transformers, LangChain, RAG, PEFT/LoRA, Ollama, vLLM</p>
+<p><b>Data &amp; Cloud:</b> Azure (MLOps), MySQL, Supabase, rasterio, Git, Linux</p>
+<p><b>Domains:</b> Computer Vision, NLP, LLM Evaluation, Explainable AI, Deep Learning</p>
+
+<h2>Achievements &amp; Certificates</h2>
+<ul>
+  <li><b>Kaggle Expert</b>; 400+ LeetCode problems solved; 2nd runner-up, Hacktomania (IEEE COMPSOC); 4 hackathons (Cosmonova, Intel GenAI, Brighter India, V-Strykathon).</li>
+  <li>Certificates: Machine Learning Specialization (DeepLearning.AI, 2024); Deep Learning Fundamentals (NVIDIA, 2024); Android Development Masterclass (Udemy, 2024).</li>
+  <li>Societies: Competitive Programmer, Microsoft Innovators Club; Operations Lead, Hindi Literary Association; AR/VR Club; Linux Club (VIT Chennai).</li>
+</ul>
+</body>
+</html>
